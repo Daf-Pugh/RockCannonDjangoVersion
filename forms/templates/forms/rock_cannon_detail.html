@@ -11,68 +11,85 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double+Ink:wght@100..900&family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
+  <header>
+    <h1 class="Title_Header">Rock Cannon</h1>
+    <button class="Menu_Button_Header">afgwsd</button>
+  </header>
+  <main class="Individual-View-Main">
+    <div class="Top-Thingy">
+      <h2 class="Cannon_Name Dot-Font-FORCE">{{ rock_cannon }}</h1>
+      <div>
+        {% for name in names %}
+          <button class="Lang-Select-Button">{{ name.language }}</button>
+        {% endfor %}
+      </div>
+    </div>
 
-  <h1 class="Cannon_Name Dot-Font-FORCE">{{ rock_cannon }}</h1>
+    <!-- Names -->
+    <section>
+      <h3>Names</h2>
+      <ul>
+        {% for name in names %}
+        <li>{{ name.name }} <em>({{ name.language }})</em></li>
+        {% endfor %}
+      </ul>
+    </section>
 
-  <!-- Names -->
-  <section>
-    <h2>Names</h2>
-    <ul>
-      {% for name in names %}
-      <li>{{ name.name }} <em>({{ name.language }})</em></li>
-      {% endfor %}
-    </ul>
-  </section>
+    <!-- Position -->
+    {% if rock_cannon.position %}
+      <section>
+        <h2>Location</h2>
+        <ul>
+          {% if rock_cannon.position.latitude %}
+          <li>Latitude: {{ rock_cannon.position.latitude }}</li>
+          <li>Longitude: {{ rock_cannon.position.longitude }}</li>
+          {% endif %}
+          {% if rock_cannon.position.os_grid %}
+          <li>OS Grid: {{ rock_cannon.position.os_grid }}</li>
+          {% endif %}
+          {% if rock_cannon.position.os_easting %}
+          <li>Easting: {{ rock_cannon.position.os_easting }}</li>
+          <li>Northing: {{ rock_cannon.position.os_northing }}</li>
+          {% endif %}
+        </ul>
+      </section>
+    {% endif %}
 
-  <!-- Position -->
-  {% if rock_cannon.position %}
-  <section>
-    <h2>Location</h2>
-    <ul>
-      {% if rock_cannon.position.latitude %}
-      <li>Latitude: {{ rock_cannon.position.latitude }}</li>
-      <li>Longitude: {{ rock_cannon.position.longitude }}</li>
-      {% endif %}
-      {% if rock_cannon.position.os_grid %}
-      <li>OS Grid: {{ rock_cannon.position.os_grid }}</li>
-      {% endif %}
-      {% if rock_cannon.position.os_easting %}
-      <li>Easting: {{ rock_cannon.position.os_easting }}</li>
-      <li>Northing: {{ rock_cannon.position.os_northing }}</li>
-      {% endif %}
-    </ul>
-  </section>
-  {% endif %}
+    <!-- Metadata -->
+    {% if rock_cannon.metadata %}
+      <section>
+        <h3>Details</h2>
+        <ul>
+          {% if rock_cannon.metadata.hole_count %}
+          <li>Hole count: {{ rock_cannon.metadata.hole_count }}</li>
+          {% endif %}
+          <li>Private land: {{ rock_cannon.metadata.is_on_private_land|yesno:"Yes,No" }}</li>
+        </ul>
+      </section>
+    {% endif %}
 
-  <!-- Metadata -->
-  {% if rock_cannon.metadata %}
-  <section>
-    <h2>Details</h2>
-    <ul>
-      {% if rock_cannon.metadata.hole_count %}
-      <li>Hole count: {{ rock_cannon.metadata.hole_count }}</li>
-      {% endif %}
-      <li>Private land: {{ rock_cannon.metadata.is_on_private_land|yesno:"Yes,No" }}</li>
-    </ul>
-  </section>
-  {% endif %}
+    <!-- Stories -->
+    {% if stories %}
+      <section>
+        <h3>Stories</h2>
+        {% for story in stories %}
+        <article>
+          <p><em>{{ story.language }}</em></p>
+          <p>{{ story.story_text }}</p>
+        </article>
+        {% endfor %}
+      </section>
+    {% endif %}
+  </main>
 
-  <!-- Stories -->
-  {% if stories %}
-  <section>
-    <h2>Stories</h2>
-    {% for story in stories %}
-    <article>
-      <p><em>{{ story.language }}</em></p>
-      <p>{{ story.story_text }}</p>
-    </article>
-    {% endfor %}
-  </section>
-  {% endif %}
+  <footer>
+    <p class="Footer-Note">Made by The Java Drinkers</p>
+    <p class="Footer-Note">GROUP 9</p>
+  </footer>
 
 </body>
 
