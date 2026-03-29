@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>{{ rock_cannon }}</title>
+  <title>{{ rock_cannon.name }}</title>
 
   <link rel="stylesheet" href="{% static 'forms/css/style.css' %}">
 
@@ -21,23 +21,15 @@
   </header>
   <main class="Individual-View-Main">
     <div class="Top-Thingy">
-      <h2 class="Cannon_Name Dot-Font-FORCE">{{ rock_cannon }}</h1>
-      <div>
-        {% for name in names %}
-          <button class="Lang-Select-Button">{{ name.language }}</button>
-        {% endfor %}
-      </div>
+      <h2 class="Cannon_Name Dot-Font-FORCE">{{ rock_cannon.name }}</h1>
+      {% load i18n %}
+        <form action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ request.path }}">
+            <button class="Lang_Button" type="submit" name="language" value="en">English</button>
+            <button class="Lang_Button" type="submit" name="language" value="cy">Cymraeg</button>
+        </form>
     </div>
-
-    <!-- Names -->
-    <section>
-      <h3>Names</h2>
-      <ul>
-        {% for name in names %}
-        <li>{{ name.name }} <em>({{ name.language }})</em></li>
-        {% endfor %}
-      </ul>
-    </section>
 
     <!-- Position -->
     {% if rock_cannon.position %}
@@ -78,7 +70,6 @@
         <h3>Stories</h2>
         {% for story in stories %}
         <article>
-          <p><em>{{ story.language }}</em></p>
           <p>{{ story.story_text }}</p>
         </article>
         {% endfor %}

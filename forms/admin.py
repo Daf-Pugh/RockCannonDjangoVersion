@@ -1,13 +1,8 @@
 from django.contrib import admin
 
-from .models import RockCannon, RCName, Position, MetaData, Story
+from .models import RockCannon, Position, MetaData, Story
 
 # Register your models here.
-
-
-class RCNameInline(admin.TabularInline):
-    model = RCName
-    extra = 1
 
 
 class StoryInline(admin.TabularInline):
@@ -34,8 +29,8 @@ class MetaDataInline(admin.StackedInline):
 
 @admin.register(RockCannon)
 class RockCannonAdmin(admin.ModelAdmin):
-    inlines = [RCNameInline, PositionInline,
+    inlines = [PositionInline,
                MetaDataInline, StoryInline]
-    list_display = ['__str__', 'slug', 'created_at']
+    list_display = ['__str__', 'name', 'created_at']
     prepopulated_fields = {'slug': []}
     readonly_fields = ['created_at', 'updated_at']

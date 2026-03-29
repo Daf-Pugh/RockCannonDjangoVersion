@@ -2,9 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("rockcannon/<slug:slug>/",
-         views.rock_cannon_detail,
-         name="rock_cannon_detail"
-         ),
+    path('', views.index, name='index'),
+    path('rockcannon/<slug:slug>/', views.rock_cannon_detail,
+         name='rock_cannon_detail'),
 ]
-
