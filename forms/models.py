@@ -19,30 +19,16 @@ from django.db import models
 
 class RockCannon(models.Model):
     slug = models.SlugField(max_length=255, unique=True, blank=True)
+    name = models.CharField(max_length=50, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        primary_name = self.names.filter(language='en').first()
-        return primary_name.name if primary_name else f"RockCannon #{self.pk}"
+        return self.name or self.slug
 
     class Meta:
         verbose_name = "Rock Cannon"
         verbose_name_plural = "Rock Cannons"
-
-
-class RCName(models.Model):
-    rock_cannon = models.ForeignKey(
-        RockCannon, on_delete=models.CASCADE, related_name='names'
-    )
-    name = models.CharField(max_length=255)
-    language = models.CharField(max_length=10)  # e.g. 'en', 'cy', 'gd'
-
-    def __str__(self):
-        return f"{self.name} ({self.language})"
-
-    class Meta:
-        verbose_name = "RC Name"
 
 
 class Position(models.Model):
@@ -59,8 +45,8 @@ class Position(models.Model):
     os_easting = models.IntegerField(null=True, blank=True)
     os_northing = models.IntegerField(null=True, blank=True)
 
-    def __str__(self):
-        return f"Position for {self.rock_cannon}"
+#    def __str__(self):
+#        return f"Position for {self.rock_cannon}"
 
 
 class MetaData(models.Model):
@@ -76,8 +62,8 @@ class MetaData(models.Model):
     hole_count = models.IntegerField(null=True, blank=True)
     is_on_private_land = models.BooleanField(default=False)
 
-    def __str__(self):
-        return f"Metadata for {self.rock_cannon}"
+#    def __str__(self):
+#        return f"Metadata for {self.rock_cannon}"
 
     class Meta:
         verbose_name = "Metadata"
@@ -88,10 +74,9 @@ class Story(models.Model):
         RockCannon, on_delete=models.CASCADE, related_name='stories'
     )
     story_text = models.TextField()
-    language = models.CharField(max_length=10)
 
-    def __str__(self):
-        return f"Story ({self.language}) for {self.rock_cannon}"
+#    def __str__(self):
+#        return f"Story ({self.language}) for {self.rock_cannon}"
 
     class Meta:
         verbose_name_plural = "Stories"
