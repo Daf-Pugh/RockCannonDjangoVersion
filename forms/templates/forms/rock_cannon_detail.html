@@ -12,6 +12,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.9.1/proj4.min.js" defer></script>
+  {% if rock_cannon.position %}
+    <script>
+      var latitude = {{ rock_cannon.position.latitude }};
+      var longitude = {{ rock_cannon.position.longitude }};
+      var grid = {{ rock_cannon.position.os_grid }};
+      var easting = {{ rock_cannon.position.os_easting }};
+      var northing = {{ rock_cannon.position.os_northing }};
+    </script>
+  {% endif %}
+  <script src="{% static 'forms/js/OSMLeaflet.js' %}" defer></script>
 </head>
 
 <body>
@@ -19,55 +33,70 @@
     <h1 class="Title_Header">Rock Cannon</h1>
     <button class="Menu_Button_Header">afgwsd</button>
   </header>
+
   <main class="Individual-View-Main">
+
     <div class="Top-Thingy">
-      <h2 class="Cannon_Name Dot-Font-FORCE">{{ rock_cannon.name }}</h1>
+      <h1 class="Cannon_Name Dot-Font-FORCE">{{ rock_cannon.name }}</h1>
       {% load i18n %}
         <form action="{% url 'set_language' %}" method="post">
             {% csrf_token %}
             <input name="next" type="hidden" value="{{ request.path }}">
             <button class="Lang_Button" type="submit" name="language" value="en">English</button>
             <button class="Lang_Button" type="submit" name="language" value="cy">Cymraeg</button>
+            <button onclick="updateMap()">Go to Location</button>
         </form>
     </div>
 
-    <!-- Position -->
-    {% if rock_cannon.position %}
-      <section>
-        <h2>Location</h2>
-        <ul>
-          {% if rock_cannon.position.latitude %}
-          <li>Latitude: {{ rock_cannon.position.latitude }}</li>
-          <li>Longitude: {{ rock_cannon.position.longitude }}</li>
-          {% endif %}
-          {% if rock_cannon.position.os_grid %}
-          <li>OS Grid: {{ rock_cannon.position.os_grid }}</li>
-          {% endif %}
-          {% if rock_cannon.position.os_easting %}
-          <li>Easting: {{ rock_cannon.position.os_easting }}</li>
-          <li>Northing: {{ rock_cannon.position.os_northing }}</li>
-          {% endif %}
-        </ul>
-      </section>
-    {% endif %}
+    <div class="side-by-side">
+      <div class="Info-Group">
+        <!-- Position -->
+        {% if rock_cannon.position %}
+          <section>
+            <h2 class="Pos-Header">Location</h2>
+            <ul class="Grid-for-Pos">
+              {% if rock_cannon.position.latitude %}
+                <li class="Latitude-Container Pos-Container">Latitude:</li>
+                <div>{{ rock_cannon.position.latitude }}</div>
+                <li class="Longitude-Container Pos-Container">Longitude:</li>
+                <div>{{ rock_cannon.position.longitude }}</div>
+              {% endif %}
 
-    <!-- Metadata -->
-    {% if rock_cannon.metadata %}
-      <section>
-        <h3>Details</h2>
-        <ul>
-          {% if rock_cannon.metadata.hole_count %}
-          <li>Hole count: {{ rock_cannon.metadata.hole_count }}</li>
-          {% endif %}
-          <li>Private land: {{ rock_cannon.metadata.is_on_private_land|yesno:"Yes,No" }}</li>
-        </ul>
-      </section>
-    {% endif %}
+              {% if rock_cannon.position.os_grid %}
+                <li class="OS Grid-Container Pos-Container">OS Grid:</li>
+                <div id="grid">{{ rock_cannon.position.os_grid }}</div>
+              {% endif %}
 
+              {% if rock_cannon.position.os_easting %}
+                <li class="Easting-Container Pos-Container">Easting:</li>
+                <div id="easting">{{ rock_cannon.position.os_easting }}</div>
+                <li class="Northing-Container Pos-Container">Northing:</li>
+                <div id="northing">{{ rock_cannon.position.os_northing }}</div>
+              {% endif %}
+            </ul>
+          </section>
+        {% endif %}
+
+        <!-- Metadata -->
+        {% if rock_cannon.metadata %}
+          <section>
+            <h2 class="Pos-Header">Details</h2>
+            <ul>
+              {% if rock_cannon.metadata.hole_count %}
+              <li>Hole count: {{ rock_cannon.metadata.hole_count }}</li>
+              {% endif %}
+              <li>{{ rock_cannon.metadata.is_on_private_land|yesno:"This is on Private Land,This is on public land" }}</li>
+            </ul>
+          </section>
+        {% endif %}
+        
+      </div>
+      <div class="Map-Styles" id="map"></div>
+    </div>
     <!-- Stories -->
     {% if stories %}
       <section>
-        <h3>Stories</h2>
+        <h3 class="Pos-Header">Stories</h2>
         {% for story in stories %}
         <article>
           <p>{{ story.story_text }}</p>

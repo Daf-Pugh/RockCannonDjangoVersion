@@ -49,10 +49,10 @@ footer {
 .Footer-Note {
   color: var(--Header-Color);
   font-family: "Bitcount Grid Double", system-ui;
-  font-optical-sizing: auto;
   margin: 0;
   padding: 0;
   max-height: 40px;
+  font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
   font-variation-settings: "slnt" -8, "CRSV" 1, "ELSH" 0, "ELXP" 0;
@@ -62,7 +62,9 @@ footer {
 /*.Menu_Button_Header {}*/
 
 .Cannon_Name {
-  color: var(--Header-Color)
+  color: var(--Header-Color);
+  margin: 0;
+  padding: 0;
 }
 
 .Top-Thingy {
@@ -76,10 +78,61 @@ footer {
   background: var(--Main-BGColor)
 }
 
+.side-by-side {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 0 auto;
+  justify-content: space-between;
+}
 
+.Info-Group {
+  margin: 8px;
+}
 
+ul {
+  margin: 0;
+  padding: 0;
+}
 
+li {
+  display: block;
+  margin-left: 5px;
+}
 
+.Map-Styles {
+  min-width: 70vw;
+  width: auto;
+  min-height: 50vw;
+  height: auto;
+}
+
+.Pos-Container>div {
+  margin-left: 5px
+}
+
+.Pos-Header {
+  color: var(--Header-Color);
+  font-family: "Bitcount Grid Double", system-ui;
+  margin: 10px;
+  padding: 0;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "slnt" -8, "CRSV" 1, "ELSH" 0, "ELXP" 0;
+}
+
+.Grid-for-Pos {
+  display: grid;
+  grid-template: repeat(5, 20px) / repeat(2, 100px);
+  gap: 4px 8px;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.Grid-for-Pos>li {
+  text-align: end;
+  display: inline;
+}
 
 
 
