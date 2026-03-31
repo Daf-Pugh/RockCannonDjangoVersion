@@ -44,7 +44,6 @@
             <input name="next" type="hidden" value="{{ request.path }}">
             <button class="Lang_Button" type="submit" name="language" value="en">English</button>
             <button class="Lang_Button" type="submit" name="language" value="cy">Cymraeg</button>
-            <button onclick="updateMap()">Go to Location</button>
         </form>
     </div>
 
@@ -90,19 +89,31 @@
           </section>
         {% endif %}
         
+        <!-- Photos would be here -->
+        {% if rock_cannon.images.all %}
+          <section class="Imgs-Section">
+            <h2 class="Pos-Header">Photos</h2>
+            <ul class="Imgs-Grid">
+              {% for image in rock_cannon.images.all %}
+              <img class="Img-Preview" src="{{ image.image.url }}" alt="{{ image.caption }}">
+              {% endfor %}
+            </ul>
+          </section>
+        {% endif %}
+        
       </div>
-      <div class="Map-Styles" id="map"></div>
+      {% if rock_cannon.position %}
+        <div class="Map-Styles" id="map"></div>
+      {% endif %}
     </div>
-    <!-- Stories -->
+    <!-- Stories would be here -->
     {% if stories %}
-      <section>
-        <h3 class="Pos-Header">Stories</h2>
-        {% for story in stories %}
+      {% for story in stories %}
         <article>
+          <h3 class="Pos-Header">Stories</h2>
           <p>{{ story.story_text }}</p>
         </article>
-        {% endfor %}
-      </section>
+      {% endfor %}
     {% endif %}
   </main>
 

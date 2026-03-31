@@ -82,7 +82,6 @@ class Story(models.Model):
         verbose_name_plural = "Stories"
 
 
-'''
 class RockCannonImage(models.Model):
     rock_cannon = models.ForeignKey(
         RockCannon, on_delete=models.CASCADE, related_name='images'
@@ -90,8 +89,8 @@ class RockCannonImage(models.Model):
     # image_url = models.URLField(max_length=500)
     image = models.ImageField(upload_to='rock_cannons/', null=True)
     caption = models.CharField(max_length=255, null=True, blank=True)
+    credit = models.CharField(max_length=255, null=True, blank=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"Image for {self.rock_cannon}"
-'''
