@@ -44,7 +44,7 @@
       <ul class="cannons">
         {% for rock_cannon in rock_cannons %}
           {% if rock_cannon.position.latitude %}
-          <li class="Cannon-Listing" id="Cannon-Listing">{{ rock_cannon.name }}: <div class="Pos-Div" id="lat">{{ rock_cannon.position.latitude }}</div>, <div class="Pos-Div" id="long">{{ rock_cannon.position.longitude }}</div></li>
+          <li class="Cannon-Listing" data-name="{{ rock_cannon.name }}" id="Cannon-Listing">{{ rock_cannon.name }}: <div class="Pos-Div" id="lat">{{ rock_cannon.position.latitude }}</div>, <div class="Pos-Div" id="long">{{ rock_cannon.position.longitude }}</div></li>
           {% endif %}
         {% endfor %}
       </ul>

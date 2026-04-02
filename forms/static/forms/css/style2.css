@@ -60,7 +60,17 @@ main {
 
 }
 
+.Cannon-Listing {
+  /* margin-bottom: 20px; */
+  padding: 10px 5px 10px 0px;
+  box-shadow: -5px 10px 0 -8px
+}
+
 .Cannon-Listing:hover {
+  text-shadow: 2px 2px 4px var(--Highlight-Color), -2px 2px 4px var(--Highlight-Color), -2px -2px 4px var(--Highlight-Color), 2px -2px 4px var(--Highlight-Color)
+}
+
+.cannons li.highlighted {
   text-shadow: 2px 2px 4px var(--Highlight-Color), -2px 2px 4px var(--Highlight-Color), -2px -2px 4px var(--Highlight-Color), 2px -2px 4px var(--Highlight-Color)
 }
 
