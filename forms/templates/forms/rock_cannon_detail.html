@@ -17,15 +17,15 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.9.1/proj4.min.js" defer></script>
   {% if rock_cannon.position %}
+    <script src="{% static 'forms/js/OSMLeaflet.js' %}" defer></script>
     <script>
-      var latitude = {{ rock_cannon.position.latitude }};
-      var longitude = {{ rock_cannon.position.longitude }};
-      var grid = {{ rock_cannon.position.os_grid }};
-      var easting = {{ rock_cannon.position.os_easting }};
-      var northing = {{ rock_cannon.position.os_northing }};
+        var latitude = {{ rock_cannon.position.latitude }};
+        var longitude = {{ rock_cannon.position.longitude }};
+        var grid = {{ rock_cannon.position.os_grid }};
+        var easting = {{ rock_cannon.position.os_easting }};
+        var northing = {{ rock_cannon.position.os_northing }};
     </script>
   {% endif %}
-  <script src="{% static 'forms/js/OSMLeaflet.js' %}" defer></script>
 </head>
 
 <body>
@@ -65,50 +65,25 @@
 
     <div class="side-by-side">
       <div class="Info-Group">
-        <!-- Position -->
+        <!-- ===== Position ===== -->
         {% if rock_cannon.position %}
-          <section>
-            <h2 class="Pos-Header">Location</h2>
-            <ul class="Grid-for-Pos">
-              {% if rock_cannon.position.latitude %}
-                <li class="Latitude-Container Pos-Container">
-                  <p>Latitude:</p>
-                </li>
-                <div>
-                  <p>{{ rock_cannon.position.latitude }}</p>
-                </div>
-                <li class="Longitude-Container Pos-Container">
-                  <p>Longitude:</p>
-                </li>
-                <div>
-                  <p>{{ rock_cannon.position.longitude }}</p>
-                </div>
-              {% endif %}
-              {% if rock_cannon.position.os_grid %}
-                <li class="OS Grid-Container Pos-Container">
-                  <p>OS Grid:</p>
-                </li>
-                <div id="grid">
-                  <p>{{ rock_cannon.position.os_grid }}</p>
-                </div>
-              {% endif %}
-              {% if rock_cannon.position.os_easting %}
-                <li class="Easting-Container Pos-Container">
-                  <p>Easting:</p>
-                </li>
-                <div id="easting">
-                  <p>{{ rock_cannon.position.os_easting }}</p>
-                </div>
-                <li class="Northing-Container Pos-Container">
-                  <p>Northing:</p>
-                </li>
-                <div id="northing">
-                  <p>{{ rock_cannon.position.os_northing }}</p>
-                </div>
-              {% endif %}
-            </ul>
+          <section id="position" class="posSection">
+            {% if rock_cannon.position.latitude %}
+              <div class="OS-Grid-Display">
+                <h4 class="Pos-Header">Coordinates</h4>
+                <p>{{ rock_cannon.position.latitude }}, {{ rock_cannon.position.longitude }}</p>
+              </div>
+            {% endif %}
+            {% if rock_cannon.position.os_grid %} {% if rock_cannon.position.os_easting %}
+            <div class="OS-Grid-Display">
+                <h4 class="Pos-Header">OS Grid Referance</h4>
+              <p> {{ rock_cannon.position.os_grid }} {{ rock_cannon.position.os_easting }} {{ rock_cannon.position.os_northing }}</p>
+            </div>
+            {% endif %} {% endif %}
+          <div class="tooltip"><p>show on map</p></div>
           </section>
         {% endif %}
+        <!-- ===== ENDPosition ===== -->
 
         <!-- Metadata -->
         {% if rock_cannon.metadata %}

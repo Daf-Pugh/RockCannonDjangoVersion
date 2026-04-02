@@ -1,0 +1,69 @@
+:root {
+  --header-height: 60px;
+  --Aside-Width: 260px;
+  --Primary-Color: #2f4f4f;
+  --Secondary-Color: #162525;
+
+  --Text-Color: #DD9206;
+
+  --Highlight-Color: #DD3006;
+
+  --Header-Color: #DD9206;
+  --Link-Color: #DD92F6;
+}
+
+.Big-Map-Styles {
+  min-width: 100vw;
+  min-height: calc(100vh - var(--header-height));
+  height: calc(100vh - var(--header-height));
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+}
+
+.Aside-Button {
+  display: block;
+  position: absolute;
+  z-index: 3;
+  right: 0px;
+  top: calc(10px + var(--header-height));
+  height: 30px;
+  width: 25px;
+  fill: var(--Text-Color);
+  margin: 0;
+  padding: 0;
+  border-radius: 5px 0px 0px 5px;
+}
+
+main {
+  display: flex;
+}
+
+.Aside-Map {
+  display: none;
+  min-width: var(--Aside-Width);
+  height: calc(100vh - var(--header-height));
+  position: relative;
+  top: 0;
+  right: calc(0px + var(--Aside-Width));
+  z-index: 4;
+  background: var(--Primary-Color);
+  padding: 5px 10px;
+}
+
+.Arrow-Icon-Menu-Button-Close {
+  display: none;
+}
+
+.Pos-Div {
+  display: inline;
+
+}
+
+.Cannon-Listing:hover {
+  text-shadow: 2px 2px 4px var(--Highlight-Color), -2px 2px 4px var(--Highlight-Color), -2px -2px 4px var(--Highlight-Color), 2px -2px 4px var(--Highlight-Color)
+}
+
+main {
+  max-height: calc(100vh - var(--header-height));
+}
