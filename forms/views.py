@@ -23,6 +23,7 @@ def rock_cannon_search(request):
     rock_cannons_json = [
         {
             'name': rock_cannon.name,
+            'slug': rock_cannon.slug,
             'lat': rock_cannon.position.latitude
             if hasattr(rock_cannon, 'position') else None,
             'lng': rock_cannon.position.longitude
