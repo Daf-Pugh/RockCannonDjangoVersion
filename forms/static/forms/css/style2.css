@@ -37,10 +37,20 @@ body {
   margin: 0;
   padding: 0;
   border-radius: 5px 0px 0px 5px;
+  border-color: var(--Secondary-Color);
+  border-right: none;
 }
 
 main {
   display: flex;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
 }
 
 .Aside-Map {
@@ -53,6 +63,10 @@ main {
   right: calc(0px + var(--Aside-Width));
   z-index: 4;
   background: var(--Primary-Color);
+  border: solid var(--Secondary-Color) 2px;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
   padding: 5px 10px;
 }
 
@@ -75,6 +89,7 @@ main {
 .Cannon-Listing {
   /* margin-bottom: 20px; */
   padding: 10px 5px 10px 0px;
+  text-shadow: 2px 2px 4px var(--Secondary-Color), -2px 2px 4px var(--Secondary-Color), -2px -2px 4px var(--Secondary-Color), 2px -2px 4px var(--Secondary-Color);
   /* box-shadow: -5px 10px 0 -8px */
 }
 

@@ -1,20 +1,5 @@
 from django.db import models
-
-# Create your models here.
-# RockCannon
-#   - Attributes
-#
-#       -Name
-#
-#       -AssetFilePath
-#
-#       -Lat -Lon
-#
-#       -MetaData
-#           -HoleCount
-#           -Connectedness
-#
-#       -Lore/Story
+from OSGridConverter import latlong2grid, grid2latlong
 
 
 class RockCannon(models.Model):
@@ -33,34 +18,60 @@ class RockCannon(models.Model):
 
 class Position(models.Model):
     rock_cannon = models.OneToOneField(
-        RockCannon, on_delete=models.CASCADE, related_name='position'
-    )
-    # Latitude & Longitude
-    latitude = models.FloatField(null=True, blank=True)
-    longitude = models.FloatField(null=True, blank=True)
-    # UK Ordinance Survey Grid Referance
-    #  SH  |  58324  |   72394
-    # GRID | EASTING | NORTHING
-    os_grid = models.CharField(max_length=3, null=True, blank=True)
-    os_easting = models.IntegerField(null=True, blank=True)
-    os_northing = models.IntegerField(null=True, blank=True)
+        RockCannon, on_delete=models.CASCADE, related_name="position")
+    grid_ref = models.CharField(max_length=10, blank=True)
+    latitude = models.DecimalField(
+        max_digits=9, decimal_places=6, null=True, blank=True)
+    longitude = models.DecimalField(
+        max_digits=9, decimal_places=6, null=True, blank=True)
 
-#    def __str__(self):
-#        return f"Position for {self.rock_cannon}"
+    def save(self, *args, **kwargs):
+        has_grid = bool(self.grid_ref)
+        has_coords = self.latitude is not None and self.longitude is not None
+        if has_grid and not has_coords:
+            try:
+                p = grid2latlong(self.grid_ref)
+                self.latitude = p.latitude
+                self.longitude = p.longitude
+            except Exception:
+                pass
+        if has_coords and not has_grid:
+            print("SAVE CALLED")
+            try:
+                grid = latlong2grid(float(self.latitude),
+                                    float(self.longitude))
+                self.grid_ref = grid
+            except Exception:
+                pass
+
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.rock_cannon} ({self.grid_ref or 'No grid'})"
 
 
 class MetaData(models.Model):
+
+    class Status(models.TextChoices):
+        YES = "yes", "Yes"
+        NO = "no", "No"
+        SOME = "some", "Some"
+
     rock_cannon = models.OneToOneField(
         RockCannon, on_delete=models.CASCADE, related_name='metadata'
     )
-    # Find if we want this to accept ranges as opposed to a fixed number due to
-    # uncertainty due to them being covered
-    # Connectedness How to represent this matrix ???
-    # yes or no bool
-    # ask about how it ought to be defaulted too ???
-    # publicallu accesible
     hole_count = models.IntegerField(null=True, blank=True)
-    is_on_private_land = models.BooleanField(default=False)
+    is_on_private_land = models.BooleanField(
+        null=True,
+        blank=True
+    )
+    has_channels = models.CharField(
+        max_length=10,
+        choices=Status.choices,
+        null=True,
+        blank=True,
+        help_text="These are the field values used in the Book The Rock Cannon of Gwynedd"
+    )
 
 #    def __str__(self):
 #        return f"Metadata for {self.rock_cannon}"

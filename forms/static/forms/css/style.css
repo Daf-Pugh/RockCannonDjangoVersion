@@ -49,12 +49,17 @@ h6 {
   color: var(--Header-Color);
   font-family: "Bitcount Grid Double", system-ui;
   font-optical-sizing: auto;
+  text-shadow: 2px 2px 4px var(--Primary-Color), -2px 2px 4px var(--Primary-Color), -2px -2px 4px var(--Primary-Color), 2px -2px 4px var(--Primary-Color);
 
   margin: 0;
   padding: 0;
   font-weight: 400;
   font-style: normal;
   font-variation-settings: "slnt" -8, "CRSV" 1, "ELSH" 0, "ELXP" 0;
+}
+
+.Text-Shadow {
+  text-shadow: 2px 2px 4px var(--Secondary-Color), -2px 2px 4px var(--Secondary-Color), -2px -2px 4px var(--Secondary-Color), 2px -2px 4px var(--Secondary-Color);
 }
 
 p,
@@ -114,6 +119,13 @@ nav:hover .Menu-Listings {
   z-index: 3;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
 
 nav:hover .Menu-Listings li:last-child {
   border-top-width: 2px;
@@ -191,6 +203,47 @@ button:hover {
   }
 }
 
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
+  border-color: var(--Secondary-Color);
+}
+
+.leaflet-bar a {
+  background-color: var(--Primary-Color);
+  border-bottom-color: var(--Secondary-Color);
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  color: var(--Text-Color);
+}
+
+.leaflet-popup-content {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--Primary-Color);
+}
+
+.leaflet-popup-tip {
+  background: var(--Primary-Color);
+}
+
+.leaflet-container a {
+  color: var(--Text-Color);
+  text-shadow: 2px 2px 4px var(--Secondary-Color), -2px 2px 4px var(--Secondary-Color), -2px -2px 4px var(--Secondary-Color), 2px -2px 4px var(--Secondary-Color);
+}
+
+.leaflet-container .leaflet-control-attribution {
+  background: var(--Primary-Color);
+  border: solid var(--Secondary-Color) 2px;
+  border-bottom: none;
+  border-right: none;
+}
+
+
+/* IMAGE STUFF  vvv */
 .Imgs-Section {
   margin: 0 10px 0 0;
 }
@@ -223,6 +276,69 @@ button:hover {
 .Img-Wrapper:hover {
   box-shadow: 0 0 1px 2px var(--Highlight-Color)
 }
+
+.Img-Wrapper:active .Img-Preview {
+  display: flex;
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  z-index: 5;
+
+}
+
+.Img-Overlay {
+  display: none;
+}
+
+/*========*/
+/* The dark backdrop that covers the page */
+.Overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The enlarged image */
+.Overlay img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+/*========*/
+.Img-Overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+
+.Close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.Big-Img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+/* IMAGE STUFF ^^^ */
+
 
 ul {
   margin: 0;
@@ -293,15 +409,12 @@ li {
   display: none;
 }
 
-/* .posSection:hover .tooltip p {} */
-
 .posSection:hover .tooltip {
-  display: block;
-  position: relative;
-  background: #fff;
+  display: inherit;
+  position: absolute;
+  background: #0000;
   text-shadow: none;
-
-
+  margin-top: -20%;
 }
 
 /* ===================================

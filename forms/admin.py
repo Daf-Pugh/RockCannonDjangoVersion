@@ -30,5 +30,15 @@ class RockCannonAdmin(admin.ModelAdmin):
     inlines = [PositionInline, MetaDataInline,
                StoryInline, ImageInline]
     list_display = ['__str__', 'name', 'created_at']
-    prepopulated_fields = {'slug': []}
+    prepopulated_fields = {'slug': ('name',)}
     readonly_fields = ['created_at', 'updated_at']
+
+    class Media:
+        css = {
+            'all': ['https://unpkg.com/leaflet@1.9.4/dist/leaflet.css']
+        }
+        js = [
+            'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js',
+            'forms/js/geodesy-loader.js',
+            'forms/js/admin_map.js',
+        ]

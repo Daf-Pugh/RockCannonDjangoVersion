@@ -6,8 +6,6 @@
   <meta charset="UTF-8">
   <title>Find a Cannon</title>
 
-  <link rel="stylesheet" href="{% static 'forms/css/style.css' %}">
-  <link rel="stylesheet" href="{% static 'forms/css/style2.css' %}">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,13 +14,19 @@
     href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap"
     rel="stylesheet">
 
+  <!-- leaflet stuff -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.9.1/proj4.min.js" defer></script>
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js" defer></script>
 
   {{ rock_cannons_json|json_script:"cannon-data" }}
   <script src="{% static 'forms/js/OSMLeaflet2.js' %}" defer></script>
 
+
+  <link rel="stylesheet" href="{% static 'forms/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'forms/css/style2.css' %}">
 
 </head>
 
@@ -39,12 +43,12 @@
       <svg xmlns="http://www.w3.org/2000/svg" id="Arrow-Icon-Menu-Button-Close" class="Arrow-Icon-Menu-Button-Close" viewBox="0 -960 960 960"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
     </button>
     <aside id="Aside-Map" class="Aside-Map">
-      <h2>Test</h2>
+      <h2 class="Text-Shadow">Rock Cannons</h2>
       {% if rock_cannons %}
       <ul class="cannons">
         {% for rock_cannon in rock_cannons %}
           {% if rock_cannon.position.latitude %}
-          <li class="Cannon-Listing" data-name="{{ rock_cannon.name }}" id="Cannon-Listing">{{ rock_cannon.name }}: <div class="Pos-Div" id="lat">{{ rock_cannon.position.latitude }}</div>, <div class="Pos-Div" id="long">{{ rock_cannon.position.longitude }}</div></li>
+          <a href="/rockcannon/{{ rock_cannon.slug }}"><li class="Cannon-Listing" data-name="{{ rock_cannon.name }}" id="Cannon-Listing">{{ rock_cannon.name }}: <div class="Pos-Div" id="lat">{{ rock_cannon.position.latitude }}</div>, <div class="Pos-Div" id="long">{{ rock_cannon.position.longitude }}</div></li></a>
           <div class="Spacer"></div>
           {% endif %}
         {% endfor %}
