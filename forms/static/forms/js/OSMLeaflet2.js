@@ -31,7 +31,7 @@ cannons.forEach(cannon => {
   if (cannon.lat && cannon.lng) {
     const marker = L.marker([cannon.lat, cannon.lng], { icon: normalIcon })
       .addTo(markers)
-      .bindPopup(`<a class="Cannon-Hover-Popup" href="/rockcannon/${cannon.slug}/">${cannon.name}</a>`);
+      .bindPopup(`<a class="Cannon-Hover-Popup" href="/${cannon.slug}/">${cannon.name}</a>`);
 
 
     map.addLayer(markers);
