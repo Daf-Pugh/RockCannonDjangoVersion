@@ -11,20 +11,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.9.1/proj4.min.js" defer></script>
-  {% if rock_cannon.position %}
-  {{ rock_cannons_json|json_script:"cannon-data" }}
-    <script src="{% static 'forms/js/OSMLeaflet2.js' %}" defer></script>
-    <script src="{% static 'forms/js/OSMLeaflet.js' %}" defer></script>
-    <script>
-        var latitude = {{ rock_cannon.position.latitude }};
-        var longitude = {{ rock_cannon.position.longitude }};
-    </script>
-  {% endif %}
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
   <link rel="stylesheet" href="{% static 'forms/css/style.css' %}">
+  <script> var latitude = {{ rock_cannon.position.latitude }}; var longitude = {{ rock_cannon.position.longitude }}; </script>
+
+  {{ rock_cannons_json|json_script:"cannon-data" }}
 </head>
 
 <body>
@@ -127,6 +120,11 @@
     <button id="close" class="Close">✕</button>
     <img src="" class="Big-Img">
   </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.9.1/proj4.min.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+  <script src="{% static 'forms/js/OSMLeaflet2.js' %}"></script>
+  <script src="{% static 'forms/js/OSMLeaflet.js' %}" ></script>
 </body>
 
 </html>

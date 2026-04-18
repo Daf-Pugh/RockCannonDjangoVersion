@@ -1,6 +1,7 @@
-map.setView([latitude, longitude], 17)
+
+map.setView([latitude, longitude], 15)
 function centerMap() {
-  map.setView([latitude, longitude], 17)
+  map.setView([latitude, longitude], 15)
 }
 var showPosButton = document.getElementById('position').addEventListener('click', centerMap);
 

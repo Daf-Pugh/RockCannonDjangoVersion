@@ -10,32 +10,23 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap"
-    rel="stylesheet">
-
-  <!-- leaflet stuff -->
+  <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.9.1/proj4.min.js" defer></script>
-  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js" defer></script>
-
-  {{ rock_cannons_json|json_script:"cannon-data" }}
-  <script src="{% static 'forms/js/OSMLeaflet2.js' %}" defer></script>
-
-
   <link rel="stylesheet" href="{% static 'forms/css/style.css' %}">
   <link rel="stylesheet" href="{% static 'forms/css/style2.css' %}">
+  
+  {{ rock_cannons_json|json_script:"cannon-data" }}
 
 </head>
 
-<body>
+<body class="Search-Body">
   <header>
     <h1 class="Title_Header">Rock Cannon</h1>
   </header>
 
-  <main class="Main">
+  <main class="Search-Main">
     <div class="Big-Map-Styles" id="map"></div>
 
     <button id="Aside-Button" class="Aside-Button">
@@ -56,6 +47,11 @@
       {% endif %}
     </aside>
   </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.9.1/proj4.min.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+  <script src="{% static 'forms/js/OSMLeaflet2.js' %}"></script>
 </body>
 
 </html>
