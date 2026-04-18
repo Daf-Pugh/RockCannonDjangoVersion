@@ -97,37 +97,92 @@ li {
   font-variation-settings: "slnt" -8, "CRSV" 1, "ELSH" 0, "ELXP" 0;
 }
 
-.Menu-Button-Header {
-  margin: 5px;
-  padding: 0;
-  aspect-ratio: 1 / 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@media (max-width: 768px) {
+  .Menu-Button-Header {
+    margin: 5px;
+    padding: 0;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .Menu-Button-Header svg {
+    fill: var(--Text-Color);
+    width: 30px;
+    height: auto;
+  }
+
+  nav:hover .Menu-Listings {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 40%;
+    z-index: 3;
+  }
+
+  .Menu-Listings {
+    position: absolute;
+    right: calc(10vw + 5px);
+    display: none;
+  }
+
+  nav:hover .Menu-Listings li:last-child {
+    border-top-width: 2px;
+  }
+
+  nav:hover .Menu-Listings li:last-child {
+    border-bottom-width: 2px;
+  }
+
+  nav:hover .Menu-Listings li {
+    display: block;
+    width: 90%;
+    background: var(--Primary-Color);
+    border: solid var(--Secondary-Color);
+    border-width: 2px 2px;
+    padding: 5px 5px 5px 8px;
+  }
+
+  nav:hover .Menu-Listings li a {
+    color: var(--Text-Color);
+    text-decoration: none;
+  }
+
+  nav:hover .Menu-Listings li:hover {
+    box-shadow: 0 0 1px 2px var(--Highlight-Color);
+    z-index: 8;
+  }
+
+  nav:hover .Menu-Listings li a {
+    z-index: 7;
+  }
 }
 
-.Menu-Button-Header svg {
-  fill: var(--Text-Color);
-  width: 30px;
-  height: auto;
-}
+@media (min-width: 768px) {
+  .Menu-Button-Header {
+    display: none;
+  }
 
-.Menu-Listings {
-  position: absolute;
-  right: calc(10vw + 5px);
-  display: none;
-}
+  .Menu-Listings {
+    display: flex;
+  }
 
-.Map-Styles {
-  display: flex;
-}
+  .Menu-Item a {
+    font-weight: 700;
+    color: var(--Text-Color);
+    padding-left: 10px;
+    text-shadow: 2px 2px 4px var(--Primary-Color), -2px 2px 4px var(--Primary-Color), -2px -2px 4px var(--Primary-Color), 2px -2px 4px var(--Primary-Color);
+  }
 
-nav:hover .Menu-Listings {
-  display: flex;
-  flex-direction: column;
+  .Menu-Item:hover a {
+    text-shadow: 2px 2px 4px var(--Highlight-Color), -2px 2px 4px var(--Highlight-Color), -2px -2px 4px var(--Highlight-Color), 2px -2px 4px var(--Highlight-Color)
+  }
 
-  max-width: 40%;
-  z-index: 3;
+  .Map-Styles {
+    display: flex;
+  }
+
 }
 
 a {
@@ -138,36 +193,6 @@ a:visited {
   text-decoration: none;
 }
 
-nav:hover .Menu-Listings li:last-child {
-  border-top-width: 2px;
-}
-
-nav:hover .Menu-Listings li:last-child {
-  border-bottom-width: 2px;
-}
-
-nav:hover .Menu-Listings li {
-  display: block;
-  width: 90%;
-  background: var(--Primary-Color);
-  border: solid var(--Secondary-Color);
-  border-width: 2px 2px;
-  padding: 5px 5px 5px 8px;
-}
-
-nav:hover .Menu-Listings li a {
-  color: var(--Text-Color);
-  text-decoration: none;
-}
-
-nav:hover .Menu-Listings li:hover {
-  box-shadow: 0 0 1px 2px var(--Highlight-Color);
-  z-index: 8;
-}
-
-nav:hover .Menu-Listings li a {
-  z-index: 7;
-}
 
 
 .Cannon_Name {
