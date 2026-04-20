@@ -28,3 +28,4 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     path('', include("forms.urls")),
 )
+
