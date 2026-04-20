@@ -36,7 +36,7 @@ footer {
   max-height: none;
   height: auto;
   max-width: 100vw;
-  padding: 0 5vw;
+  padding: 1vw;
 }
 .header-left {
   display: flex;
