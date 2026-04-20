@@ -5,8 +5,8 @@ import json
 # Create your views here.
 
 
-def index(request):
-    return render(request, 'forms/index.html')
+def rock_cannon_home(request):
+    return render(request, 'forms/rock_cannon_home.html')
 
 
 def rock_cannon_detail(request, slug):
@@ -52,3 +52,11 @@ def rock_cannon_search(request):
         'rock_cannons_json': rock_cannons_json,
     }
     return render(request, "forms/rock_cannon_search.html", context)
+
+
+def rock_cannon_gallery(request):
+    # images = RockCannonImage.objects.all().select_related('rock_cannon')
+    context = {
+        # 'images': images,
+    }
+    return render(request, 'forms/rock_cannon_gallery.html', context)
