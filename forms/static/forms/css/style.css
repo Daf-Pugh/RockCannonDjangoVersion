@@ -531,6 +531,7 @@ li { display: block; }
 }
 
 .home-hero-content {
+  font-size: 1.3em;
   position: relative;
   z-index: 2;
   max-width: 800px;
