@@ -681,3 +681,39 @@ li { display: block; }
 
   .home-footer-column { margin-bottom: 30px; }
 }
+
+.gallery-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.gallery-text {
+  flex: 1;
+}
+
+.gallery-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.gallery-image img {
+  max-width: 100%;
+  height: auto;
+  border: 5px solid var(--Secondary-Color);
+  box-shadow: 0 0 15px var(--Secondary-Color);
+  border-radius: 8px;
+}
+
+
+@media (max-width: 768px) {
+  .gallery-item {
+    flex-direction: column;
+    text-align: center;
+  }
+}
