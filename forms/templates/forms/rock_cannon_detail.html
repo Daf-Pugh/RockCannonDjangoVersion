@@ -93,7 +93,7 @@
               {% if rock_cannon.metadata.has_channels %}
               <li><p> Has Channels: {{ rock_cannon.metadata.has_channels }} </p></li>
               {% endif %}
-              <li><p>{{ rock_cannon.metadata.is_on_private_land|yesno:"This is on Private Land,This is on Public Land" }}</p></li>
+              <li><p>{{ rock_cannon.metadata.is_on_private_land|yesno:"This is on Private Land,This is on Public Land,We don't know if this Cannon is on Public or Private Land" }}</p></li>
             </ul>
           </section>
         {% endif %}

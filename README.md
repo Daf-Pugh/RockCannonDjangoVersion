@@ -1,4 +1,4 @@
-http://127.0.0.1:8000/en/rockcannon/all/
+http://127.0.0.1:8000/en/
 http://127.0.0.1:8000/admin/
 # Rock Cannon Data (from "The Rock Cannonn of Gwynedd" book by Griff R. Jones)
 # APPENDIX A
