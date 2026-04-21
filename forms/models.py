@@ -19,12 +19,13 @@ class RockCannon(models.Model):
 class Position(models.Model):
     rock_cannon = models.OneToOneField(
         RockCannon, on_delete=models.CASCADE, related_name="position")
-    grid_ref = models.CharField(max_length=10, blank=True)
+    grid_ref = models.CharField(max_length=20, blank=True)
     latitude = models.DecimalField(
         max_digits=9, decimal_places=6, null=True, blank=True)
     longitude = models.DecimalField(
         max_digits=9, decimal_places=6, null=True, blank=True)
 
+    # Kinda pointless now but it'll help for the xlsx import i think the JS geodesy thing does this now
     def save(self, *args, **kwargs):
         has_grid = bool(self.grid_ref)
         has_coords = self.latitude is not None and self.longitude is not None

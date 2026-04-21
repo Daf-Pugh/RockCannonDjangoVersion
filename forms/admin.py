@@ -38,7 +38,7 @@ class RockCannonAdmin(admin.ModelAdmin):
             'all': ['https://unpkg.com/leaflet@1.9.4/dist/leaflet.css']
         }
         js = [
-            'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js',
-            'forms/js/geodesy-loader.js',
-            'forms/js/admin_map.js',
+            # 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js',
+            # 'forms/js/geodesy-loader.js',
+            'forms/js/admin.js',
         ]
