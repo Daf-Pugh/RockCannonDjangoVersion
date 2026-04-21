@@ -1,5 +1,10 @@
 http://127.0.0.1:8000/en/
 http://127.0.0.1:8000/admin/
+django
+modeltranslation
+pillow
+pandas
+googletrans==4.0.0rc1
 # Rock Cannon Data (from "The Rock Cannonn of Gwynedd" book by Griff R. Jones)
 # APPENDIX A
 SH48104935  Cwm Bran Cannon, Nebo, Llanllyfni.  6  YES 

@@ -1,5 +1,6 @@
 from django.db import models
 from OSGridConverter import latlong2grid, grid2latlong
+from googletrans import Translator
 
 
 class RockCannon(models.Model):
@@ -87,8 +88,15 @@ class Story(models.Model):
     )
     story_text = models.TextField()
 
-#    def __str__(self):
-#        return f"Story ({self.language}) for {self.rock_cannon}"
+    def save(self, *args, **kwargs):
+        if self.story_text and not self.story_text_cy:
+            try:
+                translator = Translator()
+                self.story_text_cy = translator.translate(
+                    self.story_text, dest='cy').text
+            except Exception:
+                pass
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name_plural = "Stories"
