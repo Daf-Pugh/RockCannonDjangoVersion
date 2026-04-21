@@ -1,0 +1,199 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-21 09:56+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1) ? 0 : (n==2) ? 1 : (n != 8 && n != "
+"11) ? 2 : 3;\n"
+
+#: forms/templates/forms/rock_cannon_detail.html:29
+#: forms/templates/forms/rock_cannon_gallery.html:29
+#: forms/templates/forms/rock_cannon_home.html:26
+#: forms/templates/forms/rock_cannon_search.html:28
+msgid "Rock Cannon"
+msgstr "Cerrig Cannan"
+
+#: forms/templates/forms/rock_cannon_detail.html:41
+#: forms/templates/forms/rock_cannon_gallery.html:41
+#: forms/templates/forms/rock_cannon_home.html:8
+#: forms/templates/forms/rock_cannon_home.html:37
+#: forms/templates/forms/rock_cannon_search.html:40
+msgid "Home"
+msgstr "Adref"
+
+#: forms/templates/forms/rock_cannon_detail.html:42
+#: forms/templates/forms/rock_cannon_gallery.html:42
+#: forms/templates/forms/rock_cannon_home.html:38
+#: forms/templates/forms/rock_cannon_search.html:41
+msgid "Map"
+msgstr "Map"
+
+#: forms/templates/forms/rock_cannon_detail.html:43
+#: forms/templates/forms/rock_cannon_gallery.html:8
+#: forms/templates/forms/rock_cannon_gallery.html:43
+#: forms/templates/forms/rock_cannon_home.html:39
+#: forms/templates/forms/rock_cannon_search.html:42
+msgid "Gallery"
+msgstr "Oriel"
+
+#: forms/templates/forms/rock_cannon_detail.html:56
+msgid "English"
+msgstr "Saesneg"
+
+#: forms/templates/forms/rock_cannon_detail.html:59
+msgid "Welsh"
+msgstr "Cymraeg"
+
+#: forms/templates/forms/rock_cannon_detail.html:71
+msgid "Coordinates"
+msgstr ""
+
+#: forms/templates/forms/rock_cannon_detail.html:77
+msgid "OS Grid Referance"
+msgstr ""
+
+#: forms/templates/forms/rock_cannon_detail.html:81
+msgid "show on map"
+msgstr "dangos ar y map"
+
+#: forms/templates/forms/rock_cannon_detail.html:89
+msgid "Details"
+msgstr ""
+
+#: forms/templates/forms/rock_cannon_detail.html:92
+msgid "Hole count"
+msgstr "Nifer o tyllau"
+
+#: forms/templates/forms/rock_cannon_detail.html:95
+#: forms/templates/forms/rock_cannon_search.html:59
+msgid "Has Channels"
+msgstr "Efo Sianeli"
+
+#: forms/templates/forms/rock_cannon_detail.html:98
+msgid "This is on Private Land"
+msgstr "Mae hwn ar Dir Preifat"
+
+#: forms/templates/forms/rock_cannon_detail.html:99
+msgid "This is on Public Land"
+msgstr "Mae hwn ar Dir Cyhoeddus"
+
+#: forms/templates/forms/rock_cannon_detail.html:100
+msgid "We don't know if this Cannon is on Public or Private Land"
+msgstr "Dydyn ni ddim yn gwybod a yw'r Canon hwn ar Dir Cyhoeddus neu Breifat"
+
+#: forms/templates/forms/rock_cannon_detail.html:108
+msgid "Photos"
+msgstr ""
+
+#: forms/templates/forms/rock_cannon_detail.html:124
+msgid "Stories"
+msgstr ""
+
+#: forms/templates/forms/rock_cannon_detail.html:134
+#: forms/templates/forms/rock_cannon_gallery.html:82
+#: forms/templates/forms/rock_cannon_home.html:96
+#: forms/templates/forms/rock_cannon_search.html:80
+msgid "The Project"
+msgstr ""
+
+#: forms/templates/forms/rock_cannon_detail.html:135
+#: forms/templates/forms/rock_cannon_gallery.html:83
+#: forms/templates/forms/rock_cannon_home.html:97
+#: forms/templates/forms/rock_cannon_search.html:81
+msgid "Made by The Java Drinkers"
+msgstr "Ei Wneud gan Yr Yfwyr Java"
+
+#: forms/templates/forms/rock_cannon_detail.html:136
+#: forms/templates/forms/rock_cannon_gallery.html:84
+#: forms/templates/forms/rock_cannon_home.html:98
+#: forms/templates/forms/rock_cannon_search.html:82
+msgid "Group 9"
+msgstr "Grwp 9"
+
+#: forms/templates/forms/rock_cannon_detail.html:141
+#: forms/templates/forms/rock_cannon_gallery.html:89
+#: forms/templates/forms/rock_cannon_home.html:103
+#: forms/templates/forms/rock_cannon_search.html:87
+msgid "Rock Cannon Database"
+msgstr "Cronfa Ddata Cerrig Cannan"
+
+#: forms/templates/forms/rock_cannon_detail.html:145
+#: forms/templates/forms/rock_cannon_gallery.html:93
+#: forms/templates/forms/rock_cannon_home.html:107
+#: forms/templates/forms/rock_cannon_search.html:91
+msgid "References"
+msgstr ""
+
+#: forms/templates/forms/rock_cannon_detail.html:146
+#: forms/templates/forms/rock_cannon_gallery.html:94
+#: forms/templates/forms/rock_cannon_home.html:108
+#: forms/templates/forms/rock_cannon_search.html:92
+msgid "Wikipedia — Rock Cannon"
+msgstr ""
+
+#: forms/templates/forms/rock_cannon_gallery.html:51
+msgid "Parc Meurig Cannon, Bethesda"
+msgstr ""
+
+#: forms/templates/forms/rock_cannon_gallery.html:53
+msgid ""
+"This 100-hole rock cannon tucked away in Parc Meurig is being reclaimed by "
+"nature, with its bored holes and carved-out interconnecting grooves almost "
+"all covered over by a layer of moss and grass."
+msgstr ""
+
+#: forms/templates/forms/rock_cannon_gallery.html:65
+msgid "Rock Cannon, Mynydd Llandegai"
+msgstr ""
+
+#: forms/templates/forms/rock_cannon_gallery.html:67
+msgid "Rock cannon, looking east towards Penrhyn Quarry and the Carneddau."
+msgstr ""
+
+#: forms/templates/forms/rock_cannon_home.html:48
+msgid "Rock Cannons of Gwynedd"
+msgstr ""
+
+#: forms/templates/forms/rock_cannon_home.html:49
+msgid ""
+"Discovering the unique tradition of celebration carved into the landscape of "
+"Gwynedd and Wales."
+msgstr ""
+
+#: forms/templates/forms/rock_cannon_home.html:58
+#: forms/templates/forms/rock_cannon_search.html:55
+msgid "Rock Cannons"
+msgstr ""
+
+#: forms/templates/forms/rock_cannon_home.html:60
+msgid "All about Rock Cannons"
+msgstr ""
+
+#: forms/templates/forms/rock_cannon_home.html:69
+msgid "Fun facts about Rock Cannons"
+msgstr ""
+
+#: forms/templates/forms/rock_cannon_search.html:7
+msgid "Find a Cannon"
+msgstr ""
+
+#: forms/templates/forms/rock_cannon_search.html:58
+msgid "All"
+msgstr ""
+
+#: forms/templates/forms/rock_cannon_search.html:60
+msgid "Private Land"
+msgstr ""
