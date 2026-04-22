@@ -109,6 +109,11 @@ li {
 }
 
 @media (max-width: 768px) {
+  .Lang-Button-Form {
+    flex-direction: column;
+    gap: 0px;
+  }
+
   .Menu-Button-Header {
     margin: 5px;
     padding: 0;
@@ -202,6 +207,13 @@ a:visited {
   color: var(--Header-Color);
   margin: 0;
   padding: 0;
+}
+
+.Cannon-Search {
+  width: 88%;
+  background: #0000;
+  color: #fff;
+  border-radius: 5px;
 }
 
 button {
@@ -666,6 +678,31 @@ li {
 .active {
   background: var(--Primary-Color);
   box-shadow: 0 0 5px 5px var(--Highlight-Color);
+}
+
+
+.Lang_Button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+.Lang_Button:hover {
+  text-shadow: 2px 2px 4px var(--Highlight-Color), -2px 2px 4px var(--Highlight-Color), -2px -2px 4px var(--Highlight-Color), 2px -2px 4px var(--Highlight-Color);
+
+  box-shadow: 0 0;
+}
+
+.Lang-Button-Form {
+  display: flex;
+  position: absolute;
+  right: 5px;
+  gap: 5px;
+  align-self: start;
 }
 
 .home-text {

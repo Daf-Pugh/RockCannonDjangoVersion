@@ -24,6 +24,16 @@
         <h1 class="Title_Header">{% trans "Rock Cannon" %}</h1>
       </a>
     </div>
+    <form action="{% url 'set_language' %}" method="post" class="Lang-Button-Form">
+        {% csrf_token %}
+        <input name="next" type="hidden" value="{{ request.path }}">
+        <button class="Lang_Button" type="submit" name="language" value="en">
+          <p>en</p>
+        </button>
+        <button class="Lang_Button" type="submit" name="language" value="cy">
+          <p>cy</p>
+        </button>
+    </form>
     <nav class="Nav-Styles">
       <button class="Menu-Button-Header">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
