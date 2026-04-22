@@ -1,0 +1,12 @@
+{% extends "admin/change_form.html" %}
+{% load static %}
+
+{% block field_sets %}
+{{ block.super }}
+<div style="margin: 20px 0;">
+  <h3>{% trans "Pick Location on Map" %}</h3><p>{% trans "auto fills the Latitude and Longitude and Grid Referance below" %}</p>
+  <div id="admin-map" style="height: 400px; width: 100%; z-index: 1;"></div>
+</div>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+{% endblock %}

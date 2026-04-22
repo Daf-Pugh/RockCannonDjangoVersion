@@ -1,5 +1,6 @@
 from django.db import models
 from OSGridConverter import latlong2grid, grid2latlong
+from googletrans import Translator
 
 
 class RockCannon(models.Model):
@@ -19,12 +20,13 @@ class RockCannon(models.Model):
 class Position(models.Model):
     rock_cannon = models.OneToOneField(
         RockCannon, on_delete=models.CASCADE, related_name="position")
-    grid_ref = models.CharField(max_length=10, blank=True)
+    grid_ref = models.CharField(max_length=20, blank=True)
     latitude = models.DecimalField(
         max_digits=9, decimal_places=6, null=True, blank=True)
     longitude = models.DecimalField(
         max_digits=9, decimal_places=6, null=True, blank=True)
 
+    # Kinda pointless now but it'll help for the xlsx import i think the JS geodesy thing does this now
     def save(self, *args, **kwargs):
         has_grid = bool(self.grid_ref)
         has_coords = self.latitude is not None and self.longitude is not None
@@ -86,8 +88,15 @@ class Story(models.Model):
     )
     story_text = models.TextField()
 
-#    def __str__(self):
-#        return f"Story ({self.language}) for {self.rock_cannon}"
+    def save(self, *args, **kwargs):
+        if self.story_text and not self.story_text_cy:
+            try:
+                translator = Translator()
+                self.story_text_cy = translator.translate(
+                    self.story_text, dest='cy').text
+            except Exception:
+                pass
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name_plural = "Stories"
