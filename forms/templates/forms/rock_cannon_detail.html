@@ -14,10 +14,8 @@
     <div class="Top-Thingy">
       <h1 class="Cannon_Name Dot-Font-FORCE">{{ rock_cannon.name }}</h1>
     </div>
-
     <div class="side-by-side">
       <div class="Info-Group">
-        <!-- ===== Position ===== -->
         {% if rock_cannon.position %}
           <section id="position" class="posSection">
             {% if rock_cannon.position.latitude %}
@@ -32,12 +30,8 @@
               <p> {{ rock_cannon.position.grid_ref }} </p>
             </div>
             {% endif %} 
-            <div class="tooltip"><p>{% trans "show on map" %}</p></div>
           </section>
         {% endif %}
-        <!-- ===== ENDPosition ===== -->
-
-        <!-- Metadata -->
         {% if rock_cannon.metadata %}
           <section>
             <h2 class="Pos-Header">{% trans "Details" %}</h2>
@@ -62,7 +56,7 @@
             <h2 class="Pos-Header">{% trans "Photos" %}</h2>
             <ul id="Imgs-Grid" class="Imgs-Grid">
               {% for image in rock_cannon.images.all %}
-              <div class="Img-Wrapper"><img class="Img-Preview" src="{{ image.image.url }}" alt="{{ image.caption }}"></div>
+              <div class="Img-Wrapper"><img class="Img-Preview" src="{{ image.image.url }}" alt="{{ image.caption }}" data-credit="{{ image.credit }}"></div>
               {% endfor %}
             </ul>
           </section>
@@ -81,12 +75,51 @@
       {% endfor %}
     {% endif %}
   </main>
+  {% if request.user.is_authenticated %}
+    <div class="Extra-Section Image-Upload">
+      <form method="post" action="" enctype="multipart/form-data">
+        <div class="Input-Form-Div">
+          {% csrf_token %}
+          <label for="id_image">
+            {% trans "Contribute Your Photos" %}
+          </label>
+          <input class="Browse-Button" type="file" name="image" id="id_image" accept="image/*">
+        </div>
+        <div class="Input-Form-Div">
+          <label for="id_caption">
+            {% trans "Caption" %}
+          </label>
+          <input class="Input-Field" type="text" name="caption" id="id_caption" 
+                placeholder="{% trans "Write a caption..." %}">
+          <button type="submit" class="Upload-Button">
+            {% trans "Upload Photo" %}
+          </button>
+        </div>
+      </form>
+    </div>
+  {% endif %}
+  {% if request.user.is_staff %}
+    <div class="Extra-Section Admin-Edit">
+      <a href="{% url 'admin:forms_rockcannon_change' rock_cannon.pk %}">
+        {% trans "Edit this Cannon" %}
+      </a>
+    </div>
+  {% endif %}
 {% endblock %}
-
 {% block afterFooter %}
   <div id="overlay" class="Img-Overlay">
-    <button id="close" class="Close">✕</button>
-    <img src="" class="Big-Img">
+    <div class="close-row">
+      <button id="close" class="Close">✕</button>
+      </div>
+    <div class="carrousel">
+      <button id="prev" class="Overlay-Nav Overlay-Prev">&#8249;</button>
+      <div class="Overlay-Content">
+        <img src="" class="Big-Img">
+        <p id="overlay-caption" class="Overlay-Caption"></p>
+        <p id="overlay-credit" class="Overlay-Credit"></p>
+      </div>
+      <button id="next" class="Overlay-Nav Overlay-Next">&#8250;</button>
+    </div>
   </div>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.9.1/proj4.min.js"></script>

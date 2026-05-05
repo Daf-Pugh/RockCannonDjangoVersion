@@ -1,6 +1,7 @@
 from django.db import models
 from OSGridConverter import latlong2grid, grid2latlong
 from googletrans import Translator
+from django.contrib.auth.models import User
 
 
 class RockCannon(models.Model):
@@ -26,7 +27,7 @@ class Position(models.Model):
     longitude = models.DecimalField(
         max_digits=9, decimal_places=6, null=True, blank=True)
 
-    # Kinda pointless now but it'll help for the xlsx import i think the JS geodesy thing does this now
+# Kinda pointless now but it'll help for the xlsx import i think the JS geodesy thing does this now
     def save(self, *args, **kwargs):
         has_grid = bool(self.grid_ref)
         has_coords = self.latitude is not None and self.longitude is not None
@@ -86,7 +87,9 @@ class Story(models.Model):
     rock_cannon = models.ForeignKey(
         RockCannon, on_delete=models.CASCADE, related_name='stories'
     )
-    story_text = models.TextField()
+    story_text = models.TextField(
+        help_text="This field will auto-translate into welsh when you save \n(Using Google Translate | Please check for correctness)"
+    )
 
     def save(self, *args, **kwargs):
         if self.story_text and not self.story_text_cy:
@@ -106,11 +109,13 @@ class RockCannonImage(models.Model):
     rock_cannon = models.ForeignKey(
         RockCannon, on_delete=models.CASCADE, related_name='images'
     )
-    # image_url = models.URLField(max_length=500)
     image = models.ImageField(upload_to='rock_cannons/', null=True)
     caption = models.CharField(max_length=255, null=True, blank=True)
     credit = models.CharField(max_length=255, null=True, blank=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
+    uploaded_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, blank=True
+    )
 
     def __str__(self):
         return f"Image for {self.rock_cannon}"

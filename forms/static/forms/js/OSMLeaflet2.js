@@ -1,14 +1,38 @@
+const cannons = JSON.parse(document.getElementById('cannon-data').textContent);
+
 const defLat = 53;
 const defLong = -4;
-const cannons = JSON.parse(document.getElementById('cannon-data').textContent);
-var map = L.map('map').setView([defLat, defLong], 10);
-// const markers = L.layerGroup();
+var map = L.map('map', { maxZoom: 19 }).setView([defLat, defLong], 10);
 const markers = L.markerClusterGroup();
-
+map.addLayer(markers);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
   maxZoom: 19,
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>'
 }).addTo(map);
+
+function createCannonListItem(cannon, marker) {
+  const a = document.createElement('a');
+  a.href = `/${cannon.slug}/`;
+  a.textContent = cannon.name;
+  const li = document.createElement('li');
+  li.classList.add('Cannon-Listing');
+  li.appendChild(a);
+  if (marker) {
+    li.addEventListener('mouseover', () => marker.setIcon(highlightIcon));
+    li.addEventListener('mouseout', () => marker.setIcon(normalIcon));
+  }
+  return li;
+}
+
+function addMarkers(cannonsData) {
+  cannonsData.forEach(cannon => {
+    if (!cannon.lat || !cannon.lng) return;
+    L.marker([cannon.lat, cannon.lng], { icon: normalIcon })
+      .addTo(markers)
+      .bindPopup(`<a class="Cannon-Hover-Popup" href="/${cannon.slug}/">${cannon.name}</a>`);
+  });
+}
+
 
 function makePin({ fill, outline, dot, size }) {
   return L.divIcon({
@@ -29,62 +53,15 @@ function makePin({ fill, outline, dot, size }) {
 // ==========================================
 // Pin Styles here if u wanna change em 
 const normalIcon = makePin({ fill: "#387854", outline: "#2F4F4F", dot: "#DD9206", size: 30 })
+const fillteredIcon = makePin({ fill: "#38785422", outline: "#2F4F4F22", dot: "#DD920622", size: 30 })
 const highlightIcon = makePin({ fill: "#387854", outline: "#2F4F4F", dot: "#f310a7", size: 45 })
 var markerMap = {};
-cannons.forEach(cannon => {
-  if (cannon.lat && cannon.lng) {
-    const marker = L.marker([cannon.lat, cannon.lng], { icon: normalIcon })
-      .addTo(markers)
-      .bindPopup(`<a class="Cannon-Hover-Popup" href="/${cannon.slug}/">${cannon.name}</a>`);
-
-
-    markerMap[cannon.name] = marker;
-
-    marker.on('mouseover', () => {
-      document.querySelector(`[data-name="${cannon.name}"]`)?.classList.add('highlighted');
-    });
-
-    marker.on('mouseout', () => {
-      document.querySelector(`[data-name="${cannon.name}"]`)?.classList.remove('highlighted');
-    });
-
-  }
-});
-
-
-
-// ==========================================
-// Aside Stuff
-// ==========================================
-
-map.addLayer(markers);
-// ====================================================================================
-// Old highlighting on aside hover Stuff DELETE AT SOME POINT
-// ====================================================================================
-document.querySelectorAll('.cannons li').forEach(li => {
-  const name = li.dataset.name;
-
-  li.addEventListener('mouseover', () => {
-    if (markerMap[name]) {
-
-      markerMap[name].setIcon(highlightIcon);
-    }
-  });
-
-  li.addEventListener('mouseout', () => {
-    if (markerMap[name]) {
-      markerMap[name].setIcon(normalIcon);
-    }
-  });
-});
 
 // ==========================================
 // Aside Button Stuff
 // ==========================================
 var asideButton = document.getElementById('Aside-Button');
 if (asideButton) {
-
-  // Aside stuff
   var aside = document.getElementById('Aside-Map');
   var openIcon = document.getElementById('Arrow-Icon-Menu-Button-Open');
   var closeIcon = document.getElementById('Arrow-Icon-Menu-Button-Close');
@@ -103,33 +80,139 @@ if (asideButton) {
   }
   asideButton.addEventListener('click', swapIcon);
 }
-// ==========================================
+//==========================================
 // Individual View Stuff
-// ==========================================
+//==========================================
 const grid = document.getElementById('Imgs-Grid');
 const overlay = document.getElementById('overlay');
+
 if (grid && overlay) {
   const overlayImg = overlay.querySelector('img');
+  const overlayCaption = document.getElementById('overlay-caption');
+  const overlayCredit = document.getElementById('overlay-credit');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+  const closeBtn = document.getElementById('close');
+  const images = [...grid.querySelectorAll('img')];
+  let currentIndex = 0;
 
+  function showImage(index) {
+    const img = images[index];
+    overlayImg.src = img.src;
+    overlayCaption.textContent = img.alt;
+    overlayCredit.textContent = img.dataset.credit || '';
+    currentIndex = index;
+    prevBtn.style.visibility = index === 0 ? 'hidden' : 'visible';
+    nextBtn.style.visibility = index === images.length - 1 ? 'hidden' : 'visible';
+  }
   grid.addEventListener('click', (e) => {
     if (e.target.tagName === 'IMG') {
-      overlayImg.src = e.target.src;
       overlay.style.display = 'flex';
+      showImage(images.indexOf(e.target));
     }
   });
-
+  prevBtn.addEventListener('click', () => showImage(currentIndex - 1));
+  nextBtn.addEventListener('click', () => showImage(currentIndex + 1));
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay) overlay.style.display = 'none';
   });
-  document.getElementById('close').addEventListener('click', () => {
+  closeBtn.addEventListener('click', () => {
     overlay.style.display = 'none';
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (overlay.style.display === 'none') return;
+    if (e.key === 'ArrowLeft' && currentIndex > 0) showImage(currentIndex - 1);
+    if (e.key === 'ArrowRight' && currentIndex < images.length - 1) showImage(currentIndex + 1);
+    if (e.key === 'Escape') overlay.style.display = 'none';
   });
 }
 
-// Centering
 if (typeof latitude !== 'undefined' && typeof longitude !== 'undefined') {
-  map.setView([latitude, longitude], 15);
+  map.setView([latitude, longitude], 18);
   document.getElementById('position')?.addEventListener('click', () => {
-    map.setView([latitude, longitude], 15);
+    map.setView([latitude, longitude], 18);
   });
+}
+
+// ==========================================
+// Aside Stuff
+// ==========================================
+
+const ulOfCannons = document.getElementById('cannon-list');
+const allBtn = document.getElementById('all');
+const privLandBtn = document.getElementById('private_land');
+const channelBtn = document.getElementById('has_channels');
+const someChannelBtn = document.getElementById('has_some_channels');
+const noChannelBtn = document.getElementById('no_channels');
+const slider = document.getElementById('hole-count-slider');
+const display = document.getElementById('hole-count-value');
+const searchInput = document.getElementById('cannon-search');
+const maxHoles = Math.max(...cannons.map(c => c.hole_count || 0));
+
+if (((ulOfCannons && searchInput) && (allBtn && privLandBtn)) && ((channelBtn && someChannelBtn) && (noChannelBtn && (slider && display)))) {
+
+  slider.max = maxHoles;
+
+  const cannonItems = cannons.map(cannon => {
+    let marker = null;
+
+    if (cannon.lat && cannon.lng) {
+      marker = L.marker([cannon.lat, cannon.lng], { icon: normalIcon })
+        .addTo(markers)
+        .bindPopup(`<a class="Cannon-Hover-Popup" href="/${cannon.slug}/">${cannon.name}</a>`);
+    }
+
+    const li = createCannonListItem(cannon, marker);
+
+    if (marker) {
+      marker.on('mouseover', () => li.classList.add('highlighted'));
+      marker.on('mouseout', () => li.classList.remove('highlighted'));
+    }
+
+    return { cannon, li, marker };
+  });
+
+  function renderList() {
+    const query = searchInput?.value.toLowerCase() ?? '';
+    const activeFilter = document.querySelector('.Filter-Btn.active')?.id ?? 'all';
+    const minHoles = parseInt(slider?.value) || 0;
+
+    ulOfCannons.innerHTML = '';
+
+    cannonItems.forEach(({ cannon, li, marker }) => {
+      const matchesSearch = cannon.name.toLowerCase().includes(query);
+      const matchesFilter =
+        activeFilter === 'all' ||
+        (activeFilter === 'private_land' && cannon.is_private) ||
+        (activeFilter === 'has_channels' && cannon.has_channels === 'yes') ||
+        (activeFilter === 'has_some_channels' && cannon.has_channels === 'some') ||
+        (activeFilter === 'no_channels' && cannon.has_channels === 'no');
+      const matchesHoles = (cannon.hole_count || 0) >= minHoles;
+
+      if (matchesSearch && matchesFilter && matchesHoles) {
+        ulOfCannons.appendChild(li);
+      }
+    });
+  }
+
+  slider?.addEventListener('input', () => {
+    display.textContent = slider.value;
+    renderList();
+  });
+
+  searchInput?.addEventListener('input', () => renderList());
+
+  [allBtn, privLandBtn, channelBtn, someChannelBtn, noChannelBtn].forEach(btn => {
+    btn?.addEventListener('click', () => {
+      [allBtn, privLandBtn, channelBtn, someChannelBtn, noChannelBtn].forEach(b => b?.classList.remove('active'));
+      btn.classList.add('active');
+      renderList();
+    });
+  });
+
+  renderList();
+} else {
+  // adds the markers for the Individual view 
+  addMarkers(cannons);
 }

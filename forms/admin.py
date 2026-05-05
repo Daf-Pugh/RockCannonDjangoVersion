@@ -27,6 +27,12 @@ class MetaDataInline(admin.StackedInline):
 
 @admin.register(RockCannon)
 class RockCannonAdmin(admin.ModelAdmin):
+    search_fields = [
+        'name',
+        'slug',
+        'position__grid_ref',
+        'stories__story_text',
+    ]
     inlines = [PositionInline, MetaDataInline,
                StoryInline, ImageInline]
     list_display = ['__str__', 'name', 'created_at']

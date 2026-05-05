@@ -1,0 +1,17 @@
+{% extends "forms/rock_cannon_header.html" %}
+{% load i18n %}
+
+{% block main %}
+<main>
+  <form method="post">
+    {% csrf_token %}
+    <h2>{% trans "Login" %}</h2>
+    {{ form.username }}
+    {{ form.password }}
+    <button type="submit">{% trans "Login" %}</button>
+    {% if form.errors %}
+      <p>Invalid username or password.</p>
+    {% endif %}
+  </form>
+</main>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "forms/rock_cannon_header.html" %}
+
+{% block main %}
+<main>
+  <form method="post">
+    {% csrf_token %}
+    <h2>Register</h2>
+    {{ register_form.as_p }}
+    <button type="submit">Create Account</button>
+    {% if register_form.errors %}
+      <p>Please fix the errors below.</p>
+    {% endif %}
+  </form>
+  <a href="{% url 'login' %}">Already have an account? Login</a>
+</main>
+{% endblock %}
