@@ -91,11 +91,25 @@
           </label>
           <input class="Input-Field" type="text" name="caption" id="id_caption" 
                 placeholder="{% trans "Write a caption..." %}">
+          <label for="id_credit">
+            {% trans "Credit" %}
+          </label>
+          <input type="text" name="credit" id="id_credit" class="Input-Field" 
+                placeholder="{{ request.user.username }}">
+          <p>{% trans "if this is your image leave the credit field blank" %}</p>
           <button type="submit" class="Upload-Button">
             {% trans "Upload Photo" %}
           </button>
         </div>
       </form>
+      <div class="Input-Form-Div">
+        <form method="post" action="">
+          {% csrf_token %}
+          <input type="hidden" name="upload_story">
+          {{ story_form.story_text }}
+          <button type="submit">Submit Story</button>
+        </form>
+      </div>
     </div>
   {% endif %}
   {% if request.user.is_staff %}

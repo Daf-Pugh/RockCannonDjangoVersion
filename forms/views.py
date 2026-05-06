@@ -2,15 +2,16 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
-from .models import RockCannon, RockCannonImage
-from .forms import ImageUploadForm
+from .models import RockCannon, RockCannonImage, HomePage, GalleryPage
+from .forms import ImageUploadForm, StoryUploadForm
 import json
 
 # Create your views here.
 
 
 def rock_cannon_home(request):
-    return render(request, 'forms/rock_cannon_home.html')
+    home_page = HomePage.objects.filter(is_active=True).first()
+    return render(request, 'forms/rock_cannon_home.html', {'home_page': home_page})
 
 
 def rock_cannon_detail(request, slug):
@@ -40,11 +41,19 @@ def rock_cannon_detail(request, slug):
             img = upload_form.save(commit=False)
             img.rock_cannon = rock_cannon
             img.uploaded_by = request.user
-            img.credit = request.user.username
+            if not img.credit:
+                img.credit = request.user.username
             img.save()
+        elif 'upload_story' in request.POST:
+            story_form = StoryUploadForm(request.POST)
+            if story_form.is_valid():
+                story = story_form.save(commit=False)
+                story.rock_cannon = rock_cannon
+                story.save()
             return redirect('rock_cannon_detail', slug=slug)
     else:
         upload_form = ImageUploadForm()
+        story_form = StoryUploadForm()
 
     context = {
         'rock_cannon': rock_cannon,
@@ -52,6 +61,7 @@ def rock_cannon_detail(request, slug):
         'rock_cannons': rock_cannons,
         'rock_cannons_json': rock_cannons_json,
         'upload_form': upload_form,
+        'story_form': story_form,
     }
     return render(request, "forms/rock_cannon_detail.html", context)
 
@@ -84,11 +94,11 @@ def rock_cannon_search(request):
 
 
 def rock_cannon_gallery(request):
-    # images = RockCannonImage.objects.all().select_related('rock_cannon')
-    context = {
-        # 'images': images,
-    }
-    return render(request, 'forms/rock_cannon_gallery.html', context)
+    gallery_page = GalleryPage.objects.prefetch_related(
+        'items__rock_cannon__images',
+        'items__rock_cannon__stories',
+    ).first()
+    return render(request, 'forms/rock_cannon_gallery.html', {'gallery_page': gallery_page})
 
 
 def register(request):

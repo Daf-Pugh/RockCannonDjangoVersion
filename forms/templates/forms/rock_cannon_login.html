@@ -2,16 +2,26 @@
 {% load i18n %}
 
 {% block main %}
-<main>
-  <form method="post">
-    {% csrf_token %}
-    <h2>{% trans "Login" %}</h2>
-    {{ form.username }}
-    {{ form.password }}
-    <button type="submit">{% trans "Login" %}</button>
-    {% if form.errors %}
-      <p>Invalid username or password.</p>
-    {% endif %}
-  </form>
+<main class="Login-Main">
+  <div class="Login-Window">
+    <form method="post" class="Login-Form">
+      {% csrf_token %}
+      <h2>{% trans "Login" %}</h2>
+      <div class="Login-Prompt-Stack">
+        <div class="Login-Prompt-Item">
+          <div>{% trans "Username" %}</div>
+          <div>{{ form.username }}</div>
+        </div>
+        <div class="Login-Prompt-Item">
+          <div>{% trans "Password" %}</div>
+          <div>{{ form.password }}</div>
+        </div>
+      </div>
+      <button type="submit" class="Login-Button">{% trans "Login" %}</button>
+      {% if form.errors %}
+      <p>{% trans "Invalid username or password." %}</p>
+      {% endif %}
+    </form>
+  </div>
 </main>
 {% endblock %}

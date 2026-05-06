@@ -4,33 +4,37 @@
 {% block title %}{% trans "Gallery" %}{% endblock %}
 {% block main %}
   <main class="Gallery-Main">
-
-  <div class="gallery-item">
-    <div class="gallery-text">
-      <h2>{% trans "Parc Meurig Cannon, Bethesda" %}</h2>
-      <p>
-        {% trans "This 100-hole rock cannon tucked away in Parc Meurig is being reclaimed by nature, with its bored holes and carved-out interconnecting grooves almost all covered over by a layer of moss and grass." %}
-      </p>
+    <!-- <h1>{{ gallery_page.title }}</h1> -->
+    <!-- <p>{{ gallery_page.intro_text }}</p> -->
+    {% for item in gallery_page.items.all %}
+      {% if item.rock_cannon %}
+        <a href="/{{ item.rock_cannon.slug }}/">
+          <div class="gallery-item">
+              <div class="gallery-text">
+                <h2>{{ item.rock_cannon.name }}</h2>
+                {% with item.rock_cannon.stories.first as story %}
+                  {% if story %}
+                    <p>{{ story.story_text }}</p>
+                  {% endif %}
+                {% endwith %}
+              </div>
+              {% with item.rock_cannon.images.first as img %}
+                {% if img %}
+                  <div class="gallery-image">
+                    <img src="{{ img.image.url }}" alt="{{ img.caption }}">
+                  </div>
+                {% endif %}
+              {% endwith %}
+          </div>
+        </a>
+      {% endif %}
+    {% endfor %}
+  </main>
+  {% if request.user.is_staff %}
+    <div class="Extra-Section Admin-Edit Page-Edit">
+      <a href="{% url 'admin:forms_gallerypage_change' gallery_page.pk %}">
+        {% trans "Edit this Page" %}
+      </a>
     </div>
-
-    <div class="gallery-image">
-      <img src="/media/rock_cannons/meurig.webp" alt="Parc Meurig Cannon">
-    </div>
-  </div>
-
-
-  <div class="gallery-item">
-    <div class="gallery-text">
-      <h2>{% trans "Rock Cannon, Mynydd Llandegai" %}</h2>
-      <p>
-        {% trans "Rock cannon, looking east towards Penrhyn Quarry and the Carneddau." %}
-      </p>
-    </div>
-
-    <div class="gallery-image">
-      <img src="/media/rock_cannons/mynydd.jpg" alt="Mynydd Llandegai Cannon">
-    </div>
-  </div>
-
-</main>
+  {% endif %}
 {% endblock %}

@@ -1,16 +1,20 @@
 {% extends "forms/rock_cannon_header.html" %}
 
+{% load static %}
+{% load i18n %}
 {% block main %}
-<main>
-  <form method="post">
-    {% csrf_token %}
-    <h2>Register</h2>
-    {{ register_form.as_p }}
-    <button type="submit">Create Account</button>
-    {% if register_form.errors %}
-      <p>Please fix the errors below.</p>
-    {% endif %}
-  </form>
-  <a href="{% url 'login' %}">Already have an account? Login</a>
+<main class="Login-Main">
+  <div class="Login-Window">
+    <form method="post" class="Login-Form">
+      {% csrf_token %}
+      <h2>{% trans "Register" %}</h2>
+      {{ register_form.as_p }}
+      <button type="submit" class="Login-Button">{% trans "Create Account" %}</button>
+      {% if register_form.errors %}
+      <p>{% trans "Please fix the errors below." %}</p>
+      {% endif %}
+    </form>
+    <a class="Link" href="{% url 'login' %}">{% trans "Already have an account? Login" %}</a>
+  </div>
 </main>
 {% endblock %}

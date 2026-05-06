@@ -44,21 +44,17 @@
           <li class="Menu-Item"><a href="/gallery">{% trans "Gallery" %}</a></li>
           <div class="Account-Item">
             {% if request.user.is_authenticated %}
-              <span>{{ request.user.username }}</span>
-              <li class="Menu-Item">
-                <form method="post" action="{% url 'logout' %}">
+              <li class="Menu-Item Login-Stacked Padding-Header">
+                  <div class="Username-Item">{{ request.user.username }}</div>
+                <form method="post" class="Logout-Button" action="{% url 'logout' %}">
                   {% csrf_token %}
-                  <button type="submit">
-                    {% trans "Logout test" %}
-                  </button>
+                  <button class="Logout-Btn" type="submit">{% trans "Logout" %}</button>
                 </form>
               </li>
             {% else %}
-              <li class="Menu-Item">
-                <a href="{% url 'login' %}">{% trans "Login" %}</a>
-              </li>
-              <li class="Menu-Item">
-                <a href="{% url 'register' %}">{% trans "Create an Account" %}</a>
+              <li class="Menu-Item Login-Stacked">
+                <a class="Medium-Item" href="{% url 'login' %}">{% trans "Login" %}</a>
+                <a class="Small-Item" href="{% url 'register' %}">({% trans "Create an Account" %})</a>
               </li>
             {% endif %}
           </div>

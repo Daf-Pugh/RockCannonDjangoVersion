@@ -3,12 +3,23 @@ const cannons = JSON.parse(document.getElementById('cannon-data').textContent);
 const defLat = 53;
 const defLong = -4;
 var map = L.map('map', { maxZoom: 19 }).setView([defLat, defLong], 10);
-const markers = L.markerClusterGroup();
+const markers = L.markerClusterGroup({
+  maxClusterRadius: 60,
+  DisableClusteringAtZoom: 14,
+});
+console.log("test")
 map.addLayer(markers);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
   maxZoom: 19,
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>'
 }).addTo(map);
+
+let isClustered = true;
+
+function setClusterRadius(radius) {
+  markers.options.maxClusterRadius = radius;
+  markers.refreshClusters();
+}
 
 function createCannonListItem(cannon, marker) {
   const a = document.createElement('a');
@@ -53,10 +64,21 @@ function makePin({ fill, outline, dot, size }) {
 // ==========================================
 // Pin Styles here if u wanna change em 
 const normalIcon = makePin({ fill: "#387854", outline: "#2F4F4F", dot: "#DD9206", size: 30 })
-const fillteredIcon = makePin({ fill: "#38785422", outline: "#2F4F4F22", dot: "#DD920622", size: 30 })
+const filteredIcon = makePin({ fill: "#38785466", outline: "#2F4F4F66", dot: "#DD920666", size: 30 })
 const highlightIcon = makePin({ fill: "#387854", outline: "#2F4F4F", dot: "#f310a7", size: 45 })
 var markerMap = {};
+function updateMarkerIcons(filteredCannons) {
+  const filteredSlugs = new Set(filteredCannons.map(c => c.slug));
 
+  cannonItems.forEach(({ cannon, marker }) => {
+    if (!marker) return;
+    if (filteredSlugs.has(cannon.slug)) {
+      marker.setIcon(normalIcon);
+    } else {
+      marker.setIcon(filteredIcon);
+    }
+  });
+}
 // ==========================================
 // Aside Button Stuff
 // ==========================================
@@ -180,6 +202,8 @@ if (((ulOfCannons && searchInput) && (allBtn && privLandBtn)) && ((channelBtn &&
 
     ulOfCannons.innerHTML = '';
 
+    let filteredCount = 0;
+
     cannonItems.forEach(({ cannon, li, marker }) => {
       const matchesSearch = cannon.name.toLowerCase().includes(query);
       const matchesFilter =
@@ -189,12 +213,22 @@ if (((ulOfCannons && searchInput) && (allBtn && privLandBtn)) && ((channelBtn &&
         (activeFilter === 'has_some_channels' && cannon.has_channels === 'some') ||
         (activeFilter === 'no_channels' && cannon.has_channels === 'no');
       const matchesHoles = (cannon.hole_count || 0) >= minHoles;
-
-      if (matchesSearch && matchesFilter && matchesHoles) {
+      const matches = matchesSearch && matchesFilter && matchesHoles;
+      if (matches) {
         ulOfCannons.appendChild(li);
+        filteredCount++;
+      }
+      if (marker) {
+        marker.setIcon(matches ? normalIcon : filteredIcon);
       }
     });
+    markers.options.maxClusterRadius = filteredCount < cannonItems.length ? -1 : 40;
+    markers.clearLayers();
+    cannonItems.forEach(({ cannon, marker }) => {
+      if (marker) markers.addLayer(marker);
+    });;
   }
+  console.log(cannons.map(c => ({ name: c.name, has_channels: c.has_channels, is_private: c.is_private, hole_count: c.hole_count })));
 
   slider?.addEventListener('input', () => {
     display.textContent = slider.value;

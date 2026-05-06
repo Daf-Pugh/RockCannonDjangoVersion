@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-21 23:20+0000\n"
+"POT-Creation-Date: 2026-05-06 05:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,180 +19,184 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1) ? 0 : (n==2) ? 1 : (n != 8 && n != "
 "11) ? 2 : 3;\n"
 
-#: forms/templates/admin/forms/rockcannon/change_form.html:7
+#: forms/templates/admin/forms/rockcannon/change_form.html:8
 msgid "Pick Location on Map"
 msgstr "Dewiswch Leoliad ar y Map"
 
-#: forms/templates/admin/forms/rockcannon/change_form.html:7
+#: forms/templates/admin/forms/rockcannon/change_form.html:8
 msgid "auto fills the Latitude and Longitude and Grid Referance below"
 msgstr "yn llenwi'r Lledred a'r Hydred a'r Cyfeirnod Grid isod yn awtomatig"
 
-#: forms/templates/forms/rock_cannon_detail.html:20
-msgid "English"
-msgstr "Saesneg"
+#: forms/templates/forms/rock_cannon_create_account.html:10
+msgid "Register"
+msgstr "Cofrestri"
+
+#: forms/templates/forms/rock_cannon_create_account.html:12
+#, fuzzy
+#| msgid "Create an Account"
+msgid "Create Account"
+msgstr "Creu Chownt"
+
+#: forms/templates/forms/rock_cannon_create_account.html:14
+msgid "Please fix the errors below."
+msgstr "Cywirwch y gwallau isod."
+
+#: forms/templates/forms/rock_cannon_create_account.html:17
+msgid "Already have an account? Login"
+msgstr "Gennych gyfrif? Mewngofnodwch"
 
 #: forms/templates/forms/rock_cannon_detail.html:23
-msgid "Welsh"
-msgstr "Cymraeg"
-
-#: forms/templates/forms/rock_cannon_detail.html:35
 msgid "Coordinates"
 msgstr "Cyfesurynnau"
 
-#: forms/templates/forms/rock_cannon_detail.html:41
+#: forms/templates/forms/rock_cannon_detail.html:29
 msgid "OS Grid Referance"
 msgstr "Cyfeiriad Grid AO "
 
-#: forms/templates/forms/rock_cannon_detail.html:45
-msgid "show on map"
-msgstr "dangos ar y map"
-
-#: forms/templates/forms/rock_cannon_detail.html:53
+#: forms/templates/forms/rock_cannon_detail.html:37
 msgid "Details"
 msgstr "Manylion"
 
-#: forms/templates/forms/rock_cannon_detail.html:56
+#: forms/templates/forms/rock_cannon_detail.html:40
 msgid "Hole count"
 msgstr "Nifer o tyllau"
 
-#: forms/templates/forms/rock_cannon_detail.html:59
+#: forms/templates/forms/rock_cannon_detail.html:43
 #: forms/templates/forms/rock_cannon_search.html:24
 msgid "Has Channels"
 msgstr "Efo Sianeli"
 
-#: forms/templates/forms/rock_cannon_detail.html:62
+#: forms/templates/forms/rock_cannon_detail.html:46
 msgid "This is on Private Land"
 msgstr "Mae hwn ar Dir Preifat"
 
-#: forms/templates/forms/rock_cannon_detail.html:63
+#: forms/templates/forms/rock_cannon_detail.html:47
 msgid "This is on Public Land"
 msgstr "Mae hwn ar Dir Cyhoeddus"
 
-#: forms/templates/forms/rock_cannon_detail.html:64
+#: forms/templates/forms/rock_cannon_detail.html:48
 msgid "We don't know if this Cannon is on Public or Private Land"
 msgstr "Dydyn ni ddim yn gwybod a yw'r Canon hwn ar Dir Cyhoeddus neu Breifat"
 
-#: forms/templates/forms/rock_cannon_detail.html:72
+#: forms/templates/forms/rock_cannon_detail.html:56
 msgid "Photos"
 msgstr "Llyniau"
 
-#: forms/templates/forms/rock_cannon_detail.html:88
+#: forms/templates/forms/rock_cannon_detail.html:72
 msgid "Stories"
 msgstr "Straeon"
 
+#: forms/templates/forms/rock_cannon_detail.html:84
+msgid "Contribute Your Photos"
+msgstr "Cyfrannwch Eich Llyniau"
+
+#: forms/templates/forms/rock_cannon_detail.html:90
+msgid "Caption"
+msgstr "Capsiwn"
+
+#: forms/templates/forms/rock_cannon_detail.html:93
+msgid "Write a caption..."
+msgstr "Sgwenwch capsiwn"
+
+#: forms/templates/forms/rock_cannon_detail.html:95
+msgid "Credit"
+msgstr "Credyd"
+
+#: forms/templates/forms/rock_cannon_detail.html:99
+msgid "if this is your image leave the credit field blank"
+msgstr "os chi dynodd yr llun, gadewch y maes credyd yn wag"
+
+#: forms/templates/forms/rock_cannon_detail.html:101
+msgid "Upload Photo"
+msgstr "Uwchlwytho Llun"
+
+#: forms/templates/forms/rock_cannon_detail.html:118
+msgid "Edit this Cannon"
+msgstr "Golygu'r Craig yma"
+
 #: forms/templates/forms/rock_cannon_gallery.html:4
-#: forms/templates/forms/rock_cannon_header.html:36
+#: forms/templates/forms/rock_cannon_header.html:44
 msgid "Gallery"
 msgstr "Oriel"
 
-#: forms/templates/forms/rock_cannon_gallery.html:10
-msgid "Parc Meurig Cannon, Bethesda"
-msgstr ""
+#: forms/templates/forms/rock_cannon_gallery.html:36
+#: forms/templates/forms/rock_cannon_home.html:38
+msgid "Edit this Page"
+msgstr "Golygu'r dudalen yma"
 
-#: forms/templates/forms/rock_cannon_gallery.html:12
-msgid ""
-"This 100-hole rock cannon tucked away in Parc Meurig is being reclaimed by "
-"nature, with its bored holes and carved-out interconnecting grooves almost "
-"all covered over by a layer of moss and grass."
-msgstr ""
-"Mae'r canon carreg 100 twll hwn sydd wedi'i guddio ym Mharc Meurig yn cael "
-"ei adfer gan natur, gyda'i dyllau diflas a'i rigolau cydgysylltiedig wedi'u "
-"cerfio bron i gyd wedi'u gorchuddio gan haen o fwsogl a glaswellt."
-
-#: forms/templates/forms/rock_cannon_gallery.html:24
-msgid "Rock Cannon, Mynydd Llandegai"
-msgstr "Carreg Cannon, Mynydd Llandegai"
-
-#: forms/templates/forms/rock_cannon_gallery.html:26
-msgid "Rock cannon, looking east towards Penrhyn Quarry and the Carneddau."
-msgstr ""
-"Cannon craig, yn edrych tua'r dwyrain tuag at Chwarel y Penrhyn a'r "
-"Carneddau."
-
-#: forms/templates/forms/rock_cannon_header.html:8
-#: forms/templates/forms/rock_cannon_header.html:24
+#: forms/templates/forms/rock_cannon_header.html:7
+#: forms/templates/forms/rock_cannon_header.html:22
 msgid "Rock Cannon"
 msgstr "Cerrig Cannan"
 
-#: forms/templates/forms/rock_cannon_header.html:34
+#: forms/templates/forms/rock_cannon_header.html:42
 #: forms/templates/forms/rock_cannon_home.html:4
 msgid "Home"
 msgstr "Adref"
 
-#: forms/templates/forms/rock_cannon_header.html:35
+#: forms/templates/forms/rock_cannon_header.html:43
 msgid "Map"
 msgstr "Map"
 
-#: forms/templates/forms/rock_cannon_header.html:47
+#: forms/templates/forms/rock_cannon_header.html:52
+msgid "Logout"
+msgstr "Allgofnod"
+
+#: forms/templates/forms/rock_cannon_header.html:58
+#: forms/templates/forms/rock_cannon_login.html:9
+#: forms/templates/forms/rock_cannon_login.html:20
+msgid "Login"
+msgstr "Mewngofnod"
+
+#: forms/templates/forms/rock_cannon_header.html:59
+msgid "Create an Account"
+msgstr "Creu Chownt"
+
+#: forms/templates/forms/rock_cannon_header.html:73
 msgid "The Project"
 msgstr "Y Prosiect"
 
-#: forms/templates/forms/rock_cannon_header.html:48
+#: forms/templates/forms/rock_cannon_header.html:74
 msgid "Made by The Java Drinkers"
 msgstr "Ei Wneud gan Yr Yfwyr Java"
 
-#: forms/templates/forms/rock_cannon_header.html:49
+#: forms/templates/forms/rock_cannon_header.html:75
 msgid "Group 9"
 msgstr "Grwp 9"
 
-#: forms/templates/forms/rock_cannon_header.html:53
+#: forms/templates/forms/rock_cannon_header.html:79
 msgid "Rock Cannon Database"
 msgstr "Cronfa Ddata Cerrig Cannan"
 
-#: forms/templates/forms/rock_cannon_header.html:56
+#: forms/templates/forms/rock_cannon_header.html:82
 msgid "References"
 msgstr "Cyfeiriadau"
 
-#: forms/templates/forms/rock_cannon_header.html:57
+#: forms/templates/forms/rock_cannon_header.html:83
 msgid "Wikipedia — Rock Cannon"
 msgstr "Wicipedia - Carreg Cannan"
 
-#: forms/templates/forms/rock_cannon_home.html:9
-msgid "Rock Cannons of Gwynedd"
-msgstr "Creigiau Cannan Gwynedd"
+#: forms/templates/forms/rock_cannon_login.html:12
+msgid "Username"
+msgstr "Enw"
 
-#: forms/templates/forms/rock_cannon_home.html:10
-msgid ""
-"Discovering the unique tradition of celebration carved into the landscape of "
-"Gwynedd and Wales."
-msgstr ""
-"Darganfod y traddodiad unigryw o ddathlu sydd wedi'i gerfio yn nhirwedd "
-"Gwynedd a Chymru."
+#: forms/templates/forms/rock_cannon_login.html:16
+msgid "Password"
+msgstr "Cyfrinair"
 
-#: forms/templates/forms/rock_cannon_home.html:19
-#: forms/templates/forms/rock_cannon_search.html:20
-msgid "Rock Cannons"
-msgstr "Carreg Cannan"
-
-#: forms/templates/forms/rock_cannon_home.html:21
-msgid "All about Rock Cannons"
-msgstr "Popeth am Greigiau Cannan"
-
-#: forms/templates/forms/rock_cannon_home.html:23
-msgid ""
-"A rock cannon is a method of salutation and the celebration of important "
-"social, commercial and industrial events, whether they are of local or "
-"national interest, that dates back as far as the latter years of the 18th "
-"century. It was initially believed that this method of celebration was "
-"confined to the slate quarries and metal mines of Gwynedd, but research has "
-"now shown that sites exist in other parts of North Wales. As of 2001, 235 "
-"sites have been found adding up to 6,157 holes."
-msgstr "Mae canon craig yn ddull o gyfarch a dathlu digwyddiadau cymdeithasol, masnachol a diwydiannol pwysig, boed o ddiddordeb lleol neu genedlaethol, sy'n dyddio'n ôl cyn belled â blynyddoedd olaf y 18fed ganrif. Credwyd yn wreiddiol bod y dull hwn o ddathlu wedi'i gyfyngu i chwareli llechi a mwyngloddiau metel Gwynedd, ond mae ymchwil bellach wedi dangos bod safleoedd yn bodoli mewn rhannau eraill o Ogledd Cymru. Hyd at 2001, mae 235 o safleoedd wedi'u canfod yn cyfateb i 6,157 o dyllau."
-
-#: forms/templates/forms/rock_cannon_home.html:26
-msgid "Fun facts about Rock Cannons"
-msgstr "Ffeithiau hwyl am Ganonau Creigiau"
-
-#: forms/templates/forms/rock_cannon_home.html:28
-msgid ""
-"The earliest record of cannon in Gwynedd is found in a contemporary newspaper report (1808), which gives lengthy details of the celebration in various areas of present Gwynedd of the 50th anniversary of George III's accession to the throne. It states, under the heading of JUBILEE that 'In no part of the British Empire has this event been celebrated with greater demonstrations of rejoicing, thankfulness, and all the more estimable virtues of charity and beneficence, than in this principality'. Rock cannons were used to celebrate the marriage of Albert Edward, Prince of Wales to Princess Alexandra of Denmark in 1863 as well as the Diamond Jubilee of Queen Victoria in 1897."
-msgstr "Mae'r cofnod cynharaf o ganon yng Ngwynedd i'w gael mewn adroddiad papur newydd cyfoes (1808), sy'n rhoi manylion hir am y dathliad mewn gwahanol ardaloedd o Wynedd bresennol o 50fed pen-blwydd esgyniad Siôr III i'r orsedd. Mae'n nodi, o dan y pennawd JIWBILI 'Nid yw'r digwyddiad hwn wedi'i ddathlu mewn unrhyw ran o Ymerodraeth Prydain gyda mwy o arddangosiadau o lawenydd, diolchgarwch, a holl rinweddau mwy gwerthfawr elusen a charedigrwydd, nag yn y dywysogaeth hon'. Defnyddiwyd canonau craig i ddathlu priodas Albert Edward, Tywysog Cymru â'r Dywysoges Alexandra o Ddenmarc ym 1863 yn ogystal â Jiwbilî Diemwnt y Frenhines Victoria ym 1897."
+#: forms/templates/forms/rock_cannon_login.html:22
+msgid "Invalid username or password."
+msgstr "Enw defnyddiwr neu gyfrinair annilys"
 
 #: forms/templates/forms/rock_cannon_search.html:4
 #, fuzzy
 #| msgid "Rock Cannon"
 msgid "Find a Rock Cannon"
-msgstr "Cerrig Cannan"
+msgstr "Dewch o Hyd i Cerrig Cannan"
+
+#: forms/templates/forms/rock_cannon_search.html:20
+msgid "Rock Cannons"
+msgstr "Carreg Cannan"
 
 #: forms/templates/forms/rock_cannon_search.html:23
 msgid "All"
@@ -201,3 +205,97 @@ msgstr "Pob"
 #: forms/templates/forms/rock_cannon_search.html:25
 msgid "Private Land"
 msgstr "Tir Preifat"
+
+#: forms/templates/forms/rock_cannon_search.html:26
+#, fuzzy
+#| msgid "Has Channels"
+msgid "Has Some Channels"
+msgstr "Efo Sianeli"
+
+#: forms/templates/forms/rock_cannon_search.html:27
+#, fuzzy
+#| msgid "Has Channels"
+msgid "No Channels"
+msgstr "Efo Sianeli"
+
+#~ msgid "English"
+#~ msgstr "Saesneg"
+
+#~ msgid "Welsh"
+#~ msgstr "Cymraeg"
+
+#~ msgid "show on map"
+#~ msgstr "dangos ar y map"
+
+#~ msgid ""
+#~ "This 100-hole rock cannon tucked away in Parc Meurig is being reclaimed "
+#~ "by nature, with its bored holes and carved-out interconnecting grooves "
+#~ "almost all covered over by a layer of moss and grass."
+#~ msgstr ""
+#~ "Mae'r canon carreg 100 twll hwn sydd wedi'i guddio ym Mharc Meurig yn "
+#~ "cael ei adfer gan natur, gyda'i dyllau diflas a'i rigolau cydgysylltiedig "
+#~ "wedi'u cerfio bron i gyd wedi'u gorchuddio gan haen o fwsogl a glaswellt."
+
+#~ msgid "Rock Cannon, Mynydd Llandegai"
+#~ msgstr "Carreg Cannon, Mynydd Llandegai"
+
+#~ msgid "Rock cannon, looking east towards Penrhyn Quarry and the Carneddau."
+#~ msgstr ""
+#~ "Cannon craig, yn edrych tua'r dwyrain tuag at Chwarel y Penrhyn a'r "
+#~ "Carneddau."
+
+#~ msgid "Rock Cannons of Gwynedd"
+#~ msgstr "Creigiau Cannan Gwynedd"
+
+#~ msgid ""
+#~ "Discovering the unique tradition of celebration carved into the landscape "
+#~ "of Gwynedd and Wales."
+#~ msgstr ""
+#~ "Darganfod y traddodiad unigryw o ddathlu sydd wedi'i gerfio yn nhirwedd "
+#~ "Gwynedd a Chymru."
+
+#~ msgid "All about Rock Cannons"
+#~ msgstr "Popeth am Greigiau Cannan"
+
+#~ msgid ""
+#~ "A rock cannon is a method of salutation and the celebration of important "
+#~ "social, commercial and industrial events, whether they are of local or "
+#~ "national interest, that dates back as far as the latter years of the 18th "
+#~ "century. It was initially believed that this method of celebration was "
+#~ "confined to the slate quarries and metal mines of Gwynedd, but research "
+#~ "has now shown that sites exist in other parts of North Wales. As of 2001, "
+#~ "235 sites have been found adding up to 6,157 holes."
+#~ msgstr ""
+#~ "Mae canon craig yn ddull o gyfarch a dathlu digwyddiadau cymdeithasol, "
+#~ "masnachol a diwydiannol pwysig, boed o ddiddordeb lleol neu genedlaethol, "
+#~ "sy'n dyddio'n ôl cyn belled â blynyddoedd olaf y 18fed ganrif. Credwyd yn "
+#~ "wreiddiol bod y dull hwn o ddathlu wedi'i gyfyngu i chwareli llechi a "
+#~ "mwyngloddiau metel Gwynedd, ond mae ymchwil bellach wedi dangos bod "
+#~ "safleoedd yn bodoli mewn rhannau eraill o Ogledd Cymru. Hyd at 2001, mae "
+#~ "235 o safleoedd wedi'u canfod yn cyfateb i 6,157 o dyllau."
+
+#~ msgid "Fun facts about Rock Cannons"
+#~ msgstr "Ffeithiau hwyl am Ganonau Creigiau"
+
+#~ msgid ""
+#~ "The earliest record of cannon in Gwynedd is found in a contemporary "
+#~ "newspaper report (1808), which gives lengthy details of the celebration "
+#~ "in various areas of present Gwynedd of the 50th anniversary of George "
+#~ "III's accession to the throne. It states, under the heading of JUBILEE "
+#~ "that 'In no part of the British Empire has this event been celebrated "
+#~ "with greater demonstrations of rejoicing, thankfulness, and all the more "
+#~ "estimable virtues of charity and beneficence, than in this principality'. "
+#~ "Rock cannons were used to celebrate the marriage of Albert Edward, Prince "
+#~ "of Wales to Princess Alexandra of Denmark in 1863 as well as the Diamond "
+#~ "Jubilee of Queen Victoria in 1897."
+#~ msgstr ""
+#~ "Mae'r cofnod cynharaf o ganon yng Ngwynedd i'w gael mewn adroddiad papur "
+#~ "newydd cyfoes (1808), sy'n rhoi manylion hir am y dathliad mewn gwahanol "
+#~ "ardaloedd o Wynedd bresennol o 50fed pen-blwydd esgyniad Siôr III i'r "
+#~ "orsedd. Mae'n nodi, o dan y pennawd JIWBILI 'Nid yw'r digwyddiad hwn "
+#~ "wedi'i ddathlu mewn unrhyw ran o Ymerodraeth Prydain gyda mwy o "
+#~ "arddangosiadau o lawenydd, diolchgarwch, a holl rinweddau mwy gwerthfawr "
+#~ "elusen a charedigrwydd, nag yn y dywysogaeth hon'. Defnyddiwyd canonau "
+#~ "craig i ddathlu priodas Albert Edward, Tywysog Cymru â'r Dywysoges "
+#~ "Alexandra o Ddenmarc ym 1863 yn ogystal â Jiwbilî Diemwnt y Frenhines "
+#~ "Victoria ym 1897."

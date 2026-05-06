@@ -119,3 +119,55 @@ class RockCannonImage(models.Model):
 
     def __str__(self):
         return f"Image for {self.rock_cannon}"
+
+
+class HomePage(models.Model):
+    title = models.CharField(max_length=200)
+    intro_text = models.TextField(blank=True)
+    content_title = models.CharField(max_length=200, blank=True)
+    content_subtitle_1 = models.CharField(max_length=200, blank=True)
+    content_paragraph_1 = models.TextField(blank=True)
+    content_subtitle_2 = models.CharField(max_length=200, blank=True)
+    content_paragraph_2 = models.TextField(blank=True)
+    is_active = models.BooleanField(default=False)
+
+    def save(self, *args, **kwargs):
+        if self.is_active:
+            # deactivate all others when this one is set active
+            HomePage.objects.exclude(pk=self.pk).update(is_active=False)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.title} {'(active)' if self.is_active else ''}"
+
+    class Meta:
+        verbose_name = 'Home Page'
+
+
+class GalleryPage(models.Model):
+    title = models.CharField(max_length=200)
+    intro_text = models.TextField(blank=True)
+
+    def save(self, *args, **kwargs):
+        self.pk = 1
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return 'Gallery Page'
+
+    class Meta:
+        verbose_name = 'Gallery Page'
+
+
+class GalleryItem(models.Model):
+    gallery = models.ForeignKey(
+        GalleryPage, on_delete=models.CASCADE, related_name='items')
+    rock_cannon = models.ForeignKey(
+        RockCannon, on_delete=models.SET_NULL, null=True, blank=True)
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['order']
+
+    def __str__(self):
+        return f"{self.rock_cannon.name if self.rock_cannon else 'No cannon'}"
