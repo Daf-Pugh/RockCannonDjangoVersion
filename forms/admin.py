@@ -3,14 +3,6 @@ from django.utils.html import format_html
 from .models import RockCannon, Position, MetaData, Story, RockCannonImage, GalleryItem, GalleryPage, HomePage
 
 
-# def get_image(self, obj):
-#     img = obj.images.first()
-#     if img:
-#         return format_html('<img src="{}" style="height: 50px; border-radius: 4px;">', img.image.url)
-#     return '—'
-# get_image.short_description = 'Image'
-
-
 def flag_duplicates(modeladmin, request, queryset):
     from django.contrib import messages
     seen = {}

@@ -65,7 +65,7 @@ function makePin({ fill, outline, dot, size }) {
 // Pin Styles here if u wanna change em 
 const normalIcon = makePin({ fill: "#387854", outline: "#2F4F4F", dot: "#DD9206", size: 30 })
 const filteredIcon = makePin({ fill: "#38785466", outline: "#2F4F4F66", dot: "#DD920666", size: 30 })
-const highlightIcon = makePin({ fill: "#387854", outline: "#2F4F4F", dot: "#f310a7", size: 45 })
+const highlightIcon = makePin({ fill: "#DD9206", outline: "#2F4F4F", dot: "#2F4F4F", size: 45 })
 var markerMap = {};
 function updateMarkerIcons(filteredCannons) {
   const filteredSlugs = new Set(filteredCannons.map(c => c.slug));
@@ -247,6 +247,5 @@ if (((ulOfCannons && searchInput) && (allBtn && privLandBtn)) && ((channelBtn &&
 
   renderList();
 } else {
-  // adds the markers for the Individual view 
   addMarkers(cannons);
 }

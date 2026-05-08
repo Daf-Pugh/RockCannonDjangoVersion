@@ -76,7 +76,8 @@
     {% endif %}
   </main>
   {% if request.user.is_authenticated %}
-    <div class="Extra-Section Image-Upload">
+    <div class="Extra-Section Image-Upload Input-Form-Div">
+      <h3>Upload a Photo</h3>
       <form method="post" action="" enctype="multipart/form-data">
         <div class="Input-Form-Div">
           {% csrf_token %}
@@ -86,30 +87,32 @@
           <input class="Browse-Button" type="file" name="image" id="id_image" accept="image/*">
         </div>
         <div class="Input-Form-Div">
-          <label for="id_caption">
-            {% trans "Caption" %}
-          </label>
+          <div class="Image-Text">
+          <label for="id_caption">{% trans "Caption" %}</label>
           <input class="Input-Field" type="text" name="caption" id="id_caption" 
                 placeholder="{% trans "Write a caption..." %}">
-          <label for="id_credit">
-            {% trans "Credit" %}
-          </label>
+          </div>
+          <div class="Image-Text">
+          <label for="id_credit">{% trans "Credit" %}</label>
           <input type="text" name="credit" id="id_credit" class="Input-Field" 
                 placeholder="{{ request.user.username }}">
+          </div>
           <p>{% trans "if this is your image leave the credit field blank" %}</p>
           <button type="submit" class="Upload-Button">
             {% trans "Upload Photo" %}
           </button>
         </div>
       </form>
-      <div class="Input-Form-Div">
-        <form method="post" action="">
-          {% csrf_token %}
-          <input type="hidden" name="upload_story">
-          {{ story_form.story_text }}
-          <button type="submit">Submit Story</button>
-        </form>
-      </div>
+    </div>
+    <div class="Extra-Section Input-Form-Div">
+      <h3>{% trans "Contribute Stories" %}</h3>
+      <p>{% trans "Tell us what you know about this cannon, occations that it was fired by who, why it was fired, when it was fired (dates)." %}</p>
+      <form method="post" class="Story-Form" action="">
+        {% csrf_token %}
+        <input type="hidden" name="upload_story">
+        {{ story_form.story_text }}
+        <button type="submit" class="Upload-Button">{% trans "Submit Story" %}</button>
+      </form>
     </div>
   {% endif %}
   {% if request.user.is_staff %}

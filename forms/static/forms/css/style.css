@@ -602,10 +602,18 @@ input[type="range"] {
 .Image-Upload form {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  gap: 30px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-/* .Input-Form-Div {} */
+.Input-Form-Div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .Upload-Button {
   color: var(--Text-Color);
@@ -1181,4 +1189,26 @@ li {
 
 .Padding-Header {
   padding-left: 20px;
+}
+
+.Story-Form {
+  background: none;
+  width: 100%;
+}
+
+.Story-Form textarea {
+  background: var(--Primary-Color);
+  color: var(--Text-Color);
+  width: 80%;
+}
+
+.Image-Text {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px
+}
+
+.Image-Text-Section {
+  width: 60%;
 }

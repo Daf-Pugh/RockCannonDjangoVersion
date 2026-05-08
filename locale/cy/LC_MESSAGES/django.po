@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-06 05:30+0000\n"
+"POT-Creation-Date: 2026-05-06 09:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,7 +94,7 @@ msgstr "Cyfrannwch Eich Llyniau"
 msgid "Caption"
 msgstr "Capsiwn"
 
-#: forms/templates/forms/rock_cannon_detail.html:93
+#: forms/templates/forms/rock_cannon_detail.html:92
 msgid "Write a caption..."
 msgstr "Sgwenwch capsiwn"
 
@@ -110,7 +110,21 @@ msgstr "os chi dynodd yr llun, gadewch y maes credyd yn wag"
 msgid "Upload Photo"
 msgstr "Uwchlwytho Llun"
 
-#: forms/templates/forms/rock_cannon_detail.html:118
+#: forms/templates/forms/rock_cannon_detail.html:107
+#, fuzzy
+#| msgid "Contribute Your Photos"
+msgid "Contribute Stories"
+msgstr "Cyfrannwch Eich Llyniau"
+
+#: forms/templates/forms/rock_cannon_detail.html:108
+msgid "Tell us what you know about this cannon, occations that it was fired by who, why it was fired, when it was fired (dates)."
+msgstr "Dywedwch wrthym beth rydych chi'n ei wybod am y canon hwn, achlysuron y cafodd ei danio gan bwy, pam y cafodd ei danio, pryd y cafodd ei danio (dyddiadau)."
+
+#: forms/templates/forms/rock_cannon_detail.html:113
+msgid "Submit Story"
+msgstr "Anfon Story"
+
+#: forms/templates/forms/rock_cannon_detail.html:120
 msgid "Edit this Cannon"
 msgstr "Golygu'r Craig yma"
 
@@ -138,41 +152,41 @@ msgstr "Adref"
 msgid "Map"
 msgstr "Map"
 
-#: forms/templates/forms/rock_cannon_header.html:52
+#: forms/templates/forms/rock_cannon_header.html:51
 msgid "Logout"
 msgstr "Allgofnod"
 
-#: forms/templates/forms/rock_cannon_header.html:58
+#: forms/templates/forms/rock_cannon_header.html:56
 #: forms/templates/forms/rock_cannon_login.html:9
 #: forms/templates/forms/rock_cannon_login.html:20
 msgid "Login"
 msgstr "Mewngofnod"
 
-#: forms/templates/forms/rock_cannon_header.html:59
+#: forms/templates/forms/rock_cannon_header.html:57
 msgid "Create an Account"
 msgstr "Creu Chownt"
 
-#: forms/templates/forms/rock_cannon_header.html:73
+#: forms/templates/forms/rock_cannon_header.html:71
 msgid "The Project"
 msgstr "Y Prosiect"
 
-#: forms/templates/forms/rock_cannon_header.html:74
+#: forms/templates/forms/rock_cannon_header.html:72
 msgid "Made by The Java Drinkers"
 msgstr "Ei Wneud gan Yr Yfwyr Java"
 
-#: forms/templates/forms/rock_cannon_header.html:75
+#: forms/templates/forms/rock_cannon_header.html:73
 msgid "Group 9"
 msgstr "Grwp 9"
 
-#: forms/templates/forms/rock_cannon_header.html:79
+#: forms/templates/forms/rock_cannon_header.html:77
 msgid "Rock Cannon Database"
 msgstr "Cronfa Ddata Cerrig Cannan"
 
-#: forms/templates/forms/rock_cannon_header.html:82
+#: forms/templates/forms/rock_cannon_header.html:80
 msgid "References"
 msgstr "Cyfeiriadau"
 
-#: forms/templates/forms/rock_cannon_header.html:83
+#: forms/templates/forms/rock_cannon_header.html:81
 msgid "Wikipedia — Rock Cannon"
 msgstr "Wicipedia - Carreg Cannan"
 
