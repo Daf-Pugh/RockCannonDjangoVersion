@@ -1,3 +1,5 @@
+this doesn't include our settings.py if u want to run it i have that seperated because
+
 http://127.0.0.1:8000/en/
 http://127.0.0.1:8000/admin/
 django
