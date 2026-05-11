@@ -18,6 +18,6 @@ class HomePageAdminTranslationOptions(TranslationOptions):
               'content_paragraph_1', 'content_subtitle_2', 'content_paragraph_2',)
 
 
-# @register(GalleryPage)
-# class GalleryPageAdminTranslationOptions(TranslationOptions):
-#     fields = ('',)
+@register(GalleryPage)
+class GalleryPageAdminTranslationOptions(TranslationOptions):
+    fields = ('title', 'intro_text',)
